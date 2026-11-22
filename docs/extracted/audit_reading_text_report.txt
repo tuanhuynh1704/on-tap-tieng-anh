@@ -1,0 +1,45 @@
+literals >=20 chars: 426
+missing: 42
+
+- More effort could be made...
+- Questions 31–34 refer to…
+- Part 5 — Incomplete Sentences
+- Part 5 · Điền từ/cụm từ
+- Part 6 — Text Completion
+- Part 7 — Reading Comprehension
+- 67 Main Road, Edinburgh Village · Chaguanas, Trinidad and Tobago
+- Keep Cool Service Contractors can bring you peace of mind. As part of an annual contract, we will service your air-conditioning system, ensuring your {{31}} and comfort. This includes inspecting the system, making repairs as needed, and professionally cleaning your air ducts. {{32}}, if necessary, we can replace your old air-conditioning system with a new, cost-efficient one.
+- Berestoff Ltd. {{35}} a professional procurement officer to oversee bidding and procurement processes in all company departments. This employee will draft advertisements, prepare contract documents, process bids, {{36}} provide training on policy and procedures to company personnel.
+- The position requires a two-year degree in business administration or a related field. The {{37}} must have a minimum of three years experience as an office manager in a corporate environment, including recent experience in procurement. {{38}}.
+- My {{39}} love the colorful designs as well as the quality of your workmanship. {{40}}.
+- I would like to increase the number of units I order from you. Would you be able to {{41}} my order for the September shipment?
+- Finally, I would like to discuss the possibility of featuring your work exclusively in my store. I believe that I could reach your target audience best and that the agreement would serve {{42}} both very well.
+- I am writing {{43}} you that two university students will be arriving next week and beginning their six-week internships in the Hong Kong office. Their duties will {{44}} consist of helping the Corporate Social Responsibility team organise their plans for the coming year. Both interns have strong backgrounds in responsible business practices. As such, they will be well suited to their {{45}}.
+- The interns will be using the vacant office in the east wing. {{46}}. Please let me know if you have any questions or concerns.
+- Questions 47–48 refer to the following email.
+- I will be out of the office next week, from 15 to 19 April, attending the conference of the National Technology Alliance in Glasgow. While away, I will check e-mail and voice mail infrequently. For any urgent matters, please contact my assistant, Christina Choo. If you have a specific question about the Ezenx Industries account, please e-mail Mya Soroka.
+- Questions 49–50 refer to the following messages.
+- Notice for residents and contractors working in Bryanton. Beginning on Monday, July 1, the City of Bryanton's Building Permit Office, located at 912 Fir Avenue, will be open from Monday to Thursday, 9:00 A.M. to 5:00 P.M. Applications for permits will no longer be accepted on Fridays or Saturdays. The average processing time for permit applications will remain three business days. With this change, the city will lower its operating costs while maintaining its high standards of service for residents.
+- From: Thomas Piskorksi, Kipbank Customer Concierge
+- Questions 64–67 refer to the following advertisement.
+- As a Commbolt customer, you've come to expect the best in reliable high-speed Internet, straightforward pricing options, and top-notch customer service from friendly professionals who are responsive to your every need. — [1] —. Unlike the competition, we promise to never lock you into inflexible contracts or suddenly raise your monthly bill without notice.
+- Sarah's Catering is a family-owned-and-operated company. The company was founded ten years ago with a mission to provide the highest quality catering services in our community. We work closely with local growers and use only the freshest ingredients. Our menu items can be adapted to the client's taste or dietary needs. For example, we can prepare vegetarian, vegan, and gluten-free options.
+- Questions 76–80 refer to the following schedule and text message.
+- ● 3:30 P.M. Johanna Greenblatt
+- ● 8:00 P.M. Betty Radio Show featuring the Blass Brothers Band (to be recorded at the Bramley Theater)
+- ● 6:30 P.M. The Rolling Dozen
+- ● 7:45 P.M. Jefferson Cage
+- From: Iqbal Grewal, Director of Business Transformation — Woolf Flooring
+- Iqbal Grewal, Director of Business Transformation — Woolf Flooring
+- 1. Employees do not always use wood stains and other materials as efficiently as possible. More training time could be dedicated to this.
+- 2. Employees could be more mindful of electricity costs—for instance, turning off all lights and machines when not in use.
+- 3. Several Internet service providers are offering special pricing right now. Switching to one of these providers could save a considerable amount of money in the long run.
+- 4. More effort could be made to reuse supplies—for example, some basic personal protective equipment could be used more than once.
+- Questions 86–90 refer to the following email, order receipt table, and reply email.
+- I received my order confirmation e-mail and receipt, and I noticed an error. It seems that the person to whom I spoke on the phone while placing my order did not copy down the message I requested. The customisation I specified was that “Happy Retirement” be written on top. I hope it will still be possible to include this message despite the timing. Please respond to this e-mail to confirm.
+- Questions 91–95 refer to the following e-mails and article.
+- From: Fran Corliss, Director of Mobile Banking — Ogden Bank
+- Fran Corliss, Director of Mobile Banking — Ogden Bank
+- Questions 96–100 refer to the following notice, web page, and e-mail.
+- For more information, visit www.westwoodlibrary.org or speak with the staff at the circulation desk. https://www.westwoodlibrary.org/bookclub. We hope you will join us for the book club on the last Thursday of each month at 7:00 P.M.
+- Book club — Westwood Library. The Westwood Library Book Club meets on the last Thursday of each month at 7:00 P.M. in the Harrison Meeting Room.

@@ -1,0 +1,59 @@
+{
+  "startedAt": "2026-11-20T09:30:17.819Z",
+  "readingPracticeNestedA": 0,
+  "readingPracticeLinkContainingLink": 0,
+  "readingPracticeConsole": {
+    "errors": [],
+    "exceptions": []
+  },
+  "listeningPracticeNestedA": 0,
+  "listeningPracticeLinkContainingLink": 0,
+  "listeningPracticeConsole": {
+    "errors": [],
+    "exceptions": []
+  },
+  "chip31": {
+    "ok": true,
+    "label": "31"
+  },
+  "chip31Scroll": {
+    "top": 276,
+    "bottom": 618,
+    "innerHeight": 900,
+    "scrollY": 11274,
+    "inView": true
+  },
+  "nav100": {
+    "ok": true,
+    "label": "Câu 100 — chưa làm"
+  },
+  "nav100Scroll": {
+    "top": 355,
+    "bottom": 705,
+    "innerHeight": 900,
+    "scrollY": 49131,
+    "inView": true
+  },
+  "reviewInitially": {
+    "count": 101,
+    "pressed": 0,
+    "sample": "Chưa nắm"
+  },
+  "toggle": {
+    "ok": true
+  },
+  "afterToggle": {
+    "key": null,
+    "pressed": 1
+  },
+  "afterReload": {
+    "key": null,
+    "pressed": 1
+  },
+  "reviewConsole": {
+    "errors": [],
+    "exceptions": []
+  },
+  "cleanup": "kept-user-data",
+  "finishedAt": "2026-11-20T09:30:26.969Z"
+}

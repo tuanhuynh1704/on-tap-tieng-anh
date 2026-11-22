@@ -1,0 +1,91 @@
+=== submitAndResults
+{
+ "submitClick": {
+  "ok": true,
+  "text": "N\u1ed9p b\u00e0i"
+ },
+ "modalClick": {
+  "ok": true,
+  "text": "N\u1ed9p b\u00e0i"
+ },
+ "dialog": "react-modal",
+ "url": "http://localhost:3000/reading/results?id=reading-attempt-1795166396387-3a9eiu",
+ "screenshot": "C:\\Users\\nkocn\\OneDrive\\Desktop\\Plan\\on-tap-ta-cdr\\reading-results.png",
+ "content": {
+  "bodyLength": 45309,
+  "hasRaw": true,
+  "hasScaled": true,
+  "parts": [
+   {
+    "part": 5,
+    "present": true
+   },
+   {
+    "part": 6,
+    "present": true
+   },
+   {
+    "part": 7,
+    "present": true
+   }
+  ],
+  "filterOnlyWrong": true,
+  "filterAll": true,
+  "q31present": true,
+  "q46present": true,
+  "sample": "TR\nTOEIC REVISION\nLISTENING \u00b7 READING \u00b7 28/11/2026\nTrang ch\u1ee7\nListening\nReading\n\nREADING REVISION\n\nK\u1ebft qu\u1ea3 b\u00e0i l\u00e0m\n\nN\u1ed9p l\u00fac 16:19:56 20/11/2026 \u00b7 L\u1ea7n l\u00e0m th\u1ee9 1 \u0111\u01b0\u1ee3c l\u01b0u tr\u00ean tr\u00ecnh duy\u1ec7t n\u00e0y\n\n2\n/ 100 RAW\n\n\u0110i\u1ec3m quy \u0111\u1ed5i Reading (\u01b0\u1edbc l\u01b0\u1ee3ng)\n\n10 / 495\n\n\u0110i\u1ec3m quy \u0111\u1ed5i Reading (\u01b0\u1edbc l\u01b0\u1ee3ng) theo c\u00f4ng th\u1ee9c raw \u00d7 4.95, l\u00e0m tr\u00f2n b\u1ed9i s\u1ed1 5, t\u1ed1i thi\u1ec3u 5 \u2014 KH\u00d4NG ph\u1ea3i \u0111i\u1ec3m ETS ch\u00ednh th\u1ee9c.\n\nPh\u00e2n t\u00edch theo t\u1eebng Part\nPart 5 \u2014 Incomplete Sentences\n1/30 \u0111\u00fang \u00b7 3%\nPart 6 \u2014 Text Completion\n1/16 \u0111\u00fang \u00b7 6%\nPart 7 \u2014 Reading Comprehension\n0/54 \u0111\u00fang \u00b7 0%\nC\u1ea7n \u00f4n nh\u1ea5t \u2014 7: \u00d4n Part 7: skim m\u1ee5c \u0111\u00edch/\u00fd ch\u00ednh c\u1ee7a t\u1eebng t\u00e0i li\u1ec7u, scan chi ti\u1ebft cho c\u00e1c c\u00e2u c\u00f3 t\u1eeb kh\u00f3a, \u0111\u1ed1i chi\u1ebfu nhi\u1ec1u t\u00e0i li\u1ec7u trong b\u1ed9 \u0111o\u1ea1n.\nChi ti\u1ebft t\u1eebng c\u00e2u (98 c\u00e2u sai)\nCh\u1ec9 c\u00e2u sai\nT\u1ea5t c\u1ea3\n2\nPART 5\nSai\n\nThe costumes were not received ------ enough to be used in the first dress rehearsal.\n\nA.\nfar\nB.\nvery\nB\u1ea0N CH\u1eccN\nC.\nalmost\nD.\nsoon\n\u0110\u00c1P \u00c1N\n\n\u0110\u00e1p \u00e1n c\u1ee7a b\u1ea1n: B \u00b7 \u0110\u00e1p \u00e1n \u0111\u00fang: D\n\n3\nPART 5\nSai\n\nWheel alignments and brake system ------ are part of our vehicle service plan.\n\nA.\ninspects\nB.\ninspections\n\u0110\u00c1P \u00c1N\nC.\ninspected\nD.\ninspector\n\n\u0110\u00e1p \u00e1n c\u1ee7a b\u1ea1n: (b\u1ecf tr\u1ed1ng) \u00b7 \u0110\u00e1p \u00e1n \u0111\u00fang: B\n\n4\nPART 5\nSai\n\nRegistration for the Marketing Coalition Conference is now open ------ September 30.\n\nA.\nuntil\n\u0110\u00c1P \u00c1N\nB.\ninto\nC.\nyet\nD.\nwhile\n\n\u0110\u00e1p \u00e1n c\u1ee7a b\u1ea1n: (b\u1ecf tr\u1ed1ng) \u00b7 \u0110\u00e1p \u00e1n \u0111\u00fang: A\n\n5\nPART 5\nSai\n\nGrowth in the home entertainment industry has been ------ this quarter.\n\nA.\nseparate\nB.\nassorted\nC.\nwilling\nD.\nlimited\n\u0110\u00c1P \u00c1N\n\n\u0110\u00e1p \u00e1n c\u1ee7a b\u1ea1n: (b\u1ecf tr\u1ed1ng) \u00b7 \u0110\u00e1p \u00e1n \u0111\u00fang: D\n\n6\nPART 5\nSai\n\nH"
+ },
+ "afterReload": {
+  "url": "http://localhost:3000/reading/results?id=reading-attempt-1795166396387-3a9eiu",
+  "ok": true
+ }
+}
+
+=== reviewChecks
+{
+ "questionNodes": 0,
+ "accordion": {
+  "count": 0,
+  "openCount": 0
+ },
+ "masteredToggleClick": {
+  "ok": true,
+  "text": "Questions 31\u201334 \u00b7 Advertisement \u00b7 AdvertisementC\u00e2u 31\u201334 \u00b7 \u0110\u00e3 n\u1eafm 0/4"
+ },
+ "masteredKeyPresent": false,
+ "afterReload": {
+  "text": "Questions 31\u201334 \u00b7 Advertisement \u00b7 AdvertisementC\u00e2u 31\u201334 \u00b7 \u0110\u00e3 n\u1eafm 0/4",
+  "pressed": null,
+  "className": "flex min-w-0 flex-1 items-center gap-2 text-left min-h-[44px]"
+ },
+ "search": "typed:31",
+ "searchResult": {
+  "value": "31",
+  "visibleText": "TR\nTOEIC REVISION\nLISTENING \u00b7 READING \u00b7 28/11/2026\nTrang ch\u1ee7\nListening\nReading\n\nREADING REVISION \u00b7 28/11/2026\n\nXo\u00e1 l\u1ecbch s\u1eed Reading\n\u00d4n t\u1eadp & \u0111\u00e1p \u00e1n\n\nTo\u00e0n b\u1ed9 100 c\u00e2u k\u00e8m \u0111\u00e1p \u00e1n \u0111\u00fang. \u0110\u00e3 n\u1eafm 0/100 c\u00e2u.\n\nT\u1ea5t c\u1ea3\nCh\u01b0a n\u1eafm\nT\u00ecm trong s\u1ed1 c\u00e2u, \u0111\u00e1p \u00e1n, \u0111o\u1ea1n v\u0103n, ti\u00eau \u0111\u1ec1 t\u00e0i li\u1ec7u\nC\u00e2u hay sai t\u1eeb l\u1ecbch s\u1eed\n\nT\u1ed5ng h\u1ee3p t\u1eeb 1 l\u1ea7n l\u00e0m b\u00e0i \u0111\u00e3 l\u01b0u tr\u00ean tr\u00ecnh duy\u1ec7t n\u00e0y (top 10). B\u1ea5m v\u00e0o s\u1ed1 c\u00e2u \u0111\u1ec3 nh\u1ea3y t\u1edbi c\u00e2u \u0111\u00f3.\n\nC\u00c2U\tPART\t\u0110\u00c1P \u00c1N\tS\u1ed0 L\u1ea6N SAI / 1 L\u1ea6N L\u00c0M\n2\t5\tD\t1 l\u1ea7n\n3\t5\tB\t1 l\u1ea7n\n4\t5\tA\t1 l\u1ea7n\n5\t5\tD\t1 l\u1ea7n\n6\t5\tC\t1 l\u1ea7n\n7\t5\tB\t1 l\u1ea7n\n8\t5\tA\t1 l\u1ea7n\n9\t5\tA\t1 l\u1ea7n\n10\t5\tC\t1 l\u1ea7n\n11\t5\tB\t1 l\u1ea7n\nPart 5 \u00b7 \u0110i\u1ec1n t\u1eeb/c\u1ee5m t\u1eeb\nC\u00e2u C\u00e2u 1\u201330\nQuestions"
+ }
+}
+
+=== listeningChecks
+{
+ "questionNodes": 100,
+ "hasOnTap": true,
+ "monogramTR": true,
+ "hasListening": true
+}
+
+=== homeChecks
+{
+ "hasListening": true,
+ "hasReading": true,
+ "textSample": "TR\nTOEIC REVISION\nLISTENING \u00b7 READING \u00b7 28/11/2026\nTrang ch\u1ee7\nListening\nReading\n\nTOEIC \u00b7 LISTENING & READING\n\nTOEIC REVISION.\n\nLuy\u1ec7n tr\u1ecdn b\u1ed9 200 c\u00e2u Listening + Reading \u2014 l\u00e0m l\u1ea1i nhi\u1ec1u l\u1ea7n, theo d\u00f5i ti\u1ebfn b\u1ed9.\n\nL\u00e0m Listening\n\u2192\nL\u00e0m Reading\n\u00d4n t\u1eadp Listening\n\u00d4n t\u1eadp Reading\n100 c\u00e2u Listening\n~45 ph\u00fat\n100 c\u00e2u Reading\n~75 ph\u00fat\nL\u00e0m l\u1ea1i nhi\u1ec1u l\u1ea7n\n\nOFFICIAL PRACTICE EXAM\n\nTOEIC REVISION\n\n28.11.2026\n\nLISTENING \u00b7 45 MINUTES\n\nREADING \u00b7 75 MINUTES\n\nTOEIC LISTENING / READING\nTR\nCH\u1eccN B\u00c0I LUY\u1ec6N\nListening\n100 c\u00e2u \u00b7 ~45 ph\u00fat \u00b7 Part I\u2013IV\nNghe l\u1eddi tho\u1ea1i, nh\u1eadn c\u00e2u h\u1ecfi, ch\u1ecdn \u0111\u00e1p \u00e1n\nTranscript & \u0111\u00e1p \u00e1n cho m\u1ecdi c\u00e2u\nL\u00e0m Listening\n\u00d4n t\u1eadp & \u0111\u00e1p \u00e1n\nReading\n100 c\u00e2u \u00b7 ~75 ph\u00fat \u00b7 Part 5\u20137\n\u0110i\u1ec1n t\u1eeb/c\u1ee5m t\u1eeb, ho\u00e0n th\u00e0nh \u0111o\u1ea1n v\u0103n,"
+}
+
+=== otherRoutes
+{
+ "/results": "TR\nTOEIC REVISION\nLISTENING \u00b7 READING \u00b7 28/11/2026\nTrang ch\u1ee7\nListening\nReading\nKh\u00f4ng t\u00ecm th\u1ea5y k\u1ebft qu\u1ea3\n\nAttempt \u201c(tr\u1ed1ng)\u201d kh\u00f4ng c\u00f3 trong l\u1ecbch s\u1eed c\u1ee7a tr\u00ecnh duy\u1ec7t n\u00e0y. C\u00f3 th\u1ec3 b\u1ea1n \u0111\u00e3 xo\u00e1 l\u1ecbch s\u1eed \u00f4n t\u1eadp.\n\nL\u00e0m b\u00e0i ngay\nV\u1ec1 trang ch\u1ee7",
+ "/review": "TR\nTOEIC REVISION\nLISTENING \u00b7 READING \u00b7 28/11/2026\nTrang ch\u1ee7\nListening\nReading\n\nLISTENING REVISION \u00b7 28/11/2026\n\n0.8x\n1.0x\nXo\u00e1 l\u1ecbch s\u1eed & tr\u1ea1ng th\u00e1i \u0111\u00e3 n\u1eafm\n\u00d4n t\u1eadp & \u0111\u00e1p \u00e1n\n\nTo\u00e0n b\u1ed9 100 c\u00e2u k\u00e8m \u0111\u00e1p \u00e1n \u0111\u00fang v\u00e0 transcript (cue (n) \u0111\u01b0\u1ee3c highlight). \u0110\u00e3 n\u1eafm 0/100 c\u00e2u.\n\nT\u1ea5t c\u1ea3\nCh\u01b0a n\u1eafm\nT\u00ecm trong c\u00e2u h\u1ecfi, \u0111\u00e1"
+}
+
+=== uiIssues
+[]
+

@@ -1,0 +1,22 @@
+{
+  "before": {
+    "key": null,
+    "btn": "Chưa nắm",
+    "pressed": "false"
+  },
+  "click": {
+    "ok": true,
+    "text": "Chưa nắm"
+  },
+  "after": {
+    "key": "{\"1\":true}",
+    "btn": "Đã nắm",
+    "pressed": "true"
+  },
+  "afterReload": {
+    "key": "{\"1\":true}",
+    "btn": "Đã nắm",
+    "pressed": "true"
+  },
+  "cleanup": "removed-test-key"
+}

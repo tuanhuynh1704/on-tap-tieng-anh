@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — giấy ngà, mực teal, vàng học thuật */
+  --color-paper: #faf7ef;
+  --color-paper-deep: #f1ede1;
+  --color-surface: #ffffff;
+  --color-ink: #16302c;
+  --color-ink-soft: #52716b;
+  --color-brand: #0f766e;
+  --color-brand-dark: #115e59;
+  --color-brand-soft: #e3efe9;
+  --color-accent: #c9a227;
+  --color-accent-dark: #9a7a15;
+  --color-accent-soft: #fbf3d8;
+  --color-cta: #d97706;
+  --color-cta-dark: #b45309;
+  --color-ok: #15803d;
+  --color-ok-soft: #e3f4e8;
+  --color-bad: #b91c1c;
+  --color-bad-soft: #fbe4e4;
+  --color-line: #e2ddd0;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgb(16 48 44 / 0.06), 0 8px 24px -12px rgb(16 48 44 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(16 48 44 / 0.07), 0 18px 36px -16px rgb(16 48 44 / 0.28);
+  --shadow-sheet: 0 -8px 40px -12px rgb(16 48 44 / 0.32);
+
+  /* Motion — zero dependency */
+  --animate-fade-up: fade-up 0.56s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-scale-in: scale-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-option-pop: option-pop 0.28s ease-out both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  @keyframes option-pop {
+    0% { transform: scale(0.96); }
+    55% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: "Segoe UI", system-ui, -apple-system, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Font thống nhất cho tiêu đề & điểm số — hỗ trợ đầy đủ dấu tiếng Việt */
+.font-display {
+  font-family: "Segoe UI", system-ui, -apple-system, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Nền chấm mờ trang trí */
+.bg-dots {
+  background-image: radial-gradient(rgb(15 118 110 / 0.13) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thanh cuộn mỏng cho vùng lưới điều hướng */
+.navigator-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+.navigator-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.navigator-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.navigator-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--color-line);
+  border-radius: 9999px;
+}
+
+/* Cue (n) trong transcript */
+.cue {
+  background: #f5e3a3;
+  color: inherit;
+  border-radius: 0.25rem;
+  padding: 0 0.15rem;
+  font-weight: 600;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-scale-in,
+  .animate-shimmer,
+  .animate-option-pop {
+    animation: none !important;
+    transform: none !important;
+  }
+}

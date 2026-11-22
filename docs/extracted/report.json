@@ -1,0 +1,271 @@
+{
+  "startedAt": "2026-11-20T09:31:24.451Z",
+  "screenshots": {},
+  "counts": {
+    "questionCards": 100,
+    "questionIds": [
+      "q-1",
+      "q-2",
+      "q-3",
+      "...",
+      "q-100"
+    ],
+    "totalPassages": 19,
+    "part6Passages": 4,
+    "part7Passages": 15,
+    "blankChipButtons": 16,
+    "blankChipLabels": [
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46"
+    ],
+    "braceTokenOccurrences": 0,
+    "braceSamples": [],
+    "markerChips": 8,
+    "markersPresent": [
+      {
+        "n": 1,
+        "present": true
+      },
+      {
+        "n": 2,
+        "present": true
+      },
+      {
+        "n": 3,
+        "present": true
+      },
+      {
+        "n": 4,
+        "present": true
+      }
+    ],
+    "timer": "74:59",
+    "timerToggle": "Tắt giờ"
+  },
+  "interactions": {
+    "seed": {
+      "q1A": "clicked:Aupdated",
+      "q2B": "clicked:Bvery",
+      "q31D": "clicked:Dsafety"
+    },
+    "flagSet": true,
+    "draftKeyPresent": true,
+    "afterReload": {
+      "q1": "A",
+      "q2": "B",
+      "q31": "D",
+      "flagStillSet": true
+    },
+    "chip31Click": "31 · D",
+    "chip31Scroll": {
+      "scrollY": 10886,
+      "top": 664,
+      "inView": false
+    },
+    "nav100Click": true,
+    "nav100Scroll": {
+      "scrollY": 47237,
+      "top": 2249,
+      "inView": false
+    },
+    "progress": {
+      "answered": "Đã trả lời 3/100",
+      "mobile": null
+    },
+    "sheetOpen": {
+      "ok": true,
+      "text": "Bảng câu hỏi"
+    },
+    "mobileSheet": {
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "noOverflow": true,
+      "dialog": true,
+      "sheetScrollWidth": 375
+    }
+  },
+  "checks": {},
+  "console": {
+    "practice-initial": {
+      "errors": [],
+      "exceptions": []
+    },
+    "practice-desktop": {
+      "errors": [],
+      "exceptions": []
+    },
+    "review-load": {
+      "errors": [],
+      "exceptions": []
+    },
+    "home-load": {
+      "errors": [],
+      "exceptions": []
+    },
+    "listening-load": {
+      "errors": [],
+      "exceptions": []
+    },
+    "practice-counts": {
+      "errors": [],
+      "exceptions": []
+    },
+    "practice-interact": {
+      "errors": [],
+      "exceptions": []
+    },
+    "practice-submit": {
+      "errors": [],
+      "exceptions": []
+    },
+    "results-load": {
+      "errors": [],
+      "exceptions": []
+    },
+    "results-reload": {
+      "errors": [],
+      "exceptions": []
+    },
+    "review-checks": {
+      "errors": [],
+      "exceptions": []
+    },
+    "listening-checks": {
+      "errors": [],
+      "exceptions": []
+    },
+    "home-checks": {
+      "errors": [],
+      "exceptions": []
+    },
+    "route-results": {
+      "errors": [],
+      "exceptions": []
+    },
+    "route-review": {
+      "errors": [],
+      "exceptions": []
+    }
+  },
+  "uiIssues": [],
+  "cleanup": {
+    "handled": {
+      "cdr.reading.draft.v1": "restored-preexisting",
+      "cdr.reading.history.v1": "removed-created-by-me",
+      "cdr.reading.mastered.v1": "removed-created-by-me"
+    },
+    "removedAttempts": [],
+    "finalKeys": [
+      "cdr.draft.v1",
+      "cdr.reading.draft.v1"
+    ],
+    "preexisting": [
+      "cdr.draft.v1",
+      "cdr.reading.draft.v1"
+    ]
+  },
+  "initialLocalStorageKeys": [
+    "cdr.draft.v1",
+    "cdr.reading.draft.v1"
+  ],
+  "shotsEarly": {
+    "desktop": "C:\\Users\\nkocn\\OneDrive\\Desktop\\Plan\\on-tap-ta-cdr\\reading-practice-desktop.png",
+    "mobile": "C:\\Users\\nkocn\\OneDrive\\Desktop\\Plan\\on-tap-ta-cdr\\reading-practice-mobile.png",
+    "review": "C:\\Users\\nkocn\\OneDrive\\Desktop\\Plan\\on-tap-ta-cdr\\reading-review.png",
+    "home": "C:\\Users\\nkocn\\OneDrive\\Desktop\\Plan\\on-tap-ta-cdr\\home-two-cards.png",
+    "listening": "C:\\Users\\nkocn\\OneDrive\\Desktop\\Plan\\on-tap-ta-cdr\\listening-practice-regression.png"
+  },
+  "submitAndResults": {
+    "submitClick": {
+      "ok": true,
+      "text": "Nộp bài"
+    },
+    "modalClick": {
+      "ok": true,
+      "text": "Nộp bài"
+    },
+    "dialog": "react-modal",
+    "url": "http://localhost:3000/reading/results?id=reading-attempt-1795167111272-6x8kmp",
+    "screenshot": "C:\\Users\\nkocn\\OneDrive\\Desktop\\Plan\\on-tap-ta-cdr\\reading-results.png",
+    "content": {
+      "bodyLength": 45309,
+      "hasRaw": true,
+      "hasScaled": true,
+      "parts": [
+        {
+          "part": 5,
+          "present": true
+        },
+        {
+          "part": 6,
+          "present": true
+        },
+        {
+          "part": 7,
+          "present": true
+        }
+      ],
+      "filterOnlyWrong": true,
+      "filterAll": true,
+      "q31present": true,
+      "q46present": true,
+      "sample": "TR\nTOEIC REVISION\nLISTENING · READING · 28/11/2026\nTrang chủ\nListening\nReading\n\nREADING REVISION\n\nKết quả bài làm\n\nNộp lúc 16:31:51 20/11/2026 · Lần làm thứ 1 được lưu trên trình duyệt này\n\n2\n/ 100 RAW\n\nĐiểm quy đổi Reading (ước lượng)\n\n10 / 495\n\nĐiểm quy đổi Reading (ước lượng) theo công thức raw × 4.95, làm tròn bội số 5, tối thiểu 5 — KHÔNG phải điểm ETS chính thức.\n\nPhân tích theo từng Part\nPart 5 — Incomplete Sentences\n1/30 đúng · 3%\nPart 6 — Text Completion\n1/16 đúng · 6%\nPart 7 — Reading Comprehension\n0/54 đúng · 0%\nCần ôn nhất — 7: Ôn Part 7: skim mục đích/ý chính của từng tài liệu, scan chi tiết cho các câu có từ khóa, đối chiếu nhiều tài liệu trong bộ đoạn.\nChi tiết từng câu (98 câu sai)\nChỉ câu sai\nTất cả\n2\nPART 5\nSai\n\nThe costumes were not received ------ enough to be used in the first dress rehearsal.\n\nA.\nfar\nB.\nvery\nBẠN CHỌN\nC.\nalmost\nD.\nsoon\nĐÁP ÁN\n\nĐáp án của bạn: B · Đáp án đúng: D\n\n3\nPART 5\nSai\n\nWheel alignments and brake system ------ are part of our vehicle service plan.\n\nA.\ninspects\nB.\ninspections\nĐÁP ÁN\nC.\ninspected\nD.\ninspector\n\nĐáp án của bạn: (bỏ trống) · Đáp án đúng: B\n\n4\nPART 5\nSai\n\nRegistration for the Marketing Coalition Conference is now open ------ September 30.\n\nA.\nuntil\nĐÁP ÁN\nB.\ninto\nC.\nyet\nD.\nwhile\n\nĐáp án của bạn: (bỏ trống) · Đáp án đúng: A\n\n5\nPART 5\nSai\n\nGrowth in the home entertainment industry has been ------ this quarter.\n\nA.\nseparate\nB.\nassorted\nC.\nwilling\nD.\nlimited\nĐÁP ÁN\n\nĐáp án của bạn: (bỏ trống) · Đáp án đúng: D\n\n6\nPART 5\nSai\n\nH"
+    },
+    "afterReload": {
+      "url": "http://localhost:3000/reading/results?id=reading-attempt-1795167111272-6x8kmp",
+      "ok": true
+    }
+  },
+  "reviewChecks": {
+    "questionNodes": 0,
+    "accordion": {
+      "count": 0,
+      "openCount": 0
+    },
+    "masteredToggleClick": {
+      "ok": true,
+      "text": "Questions 31–34 · Advertisement · AdvertisementCâu 31–34 · Đã nắm 0/4"
+    },
+    "masteredKeyPresent": false,
+    "afterReload": {
+      "text": "Questions 31–34 · Advertisement · AdvertisementCâu 31–34 · Đã nắm 0/4",
+      "pressed": null,
+      "className": "flex min-w-0 flex-1 items-center gap-2 text-left min-h-[44px]"
+    },
+    "search": "typed:31",
+    "searchResult": {
+      "value": "31",
+      "visibleText": "TR\nTOEIC REVISION\nLISTENING · READING · 28/11/2026\nTrang chủ\nListening\nReading\n\nREADING REVISION · 28/11/2026\n\nXoá lịch sử Reading\nÔn tập & đáp án\n\nToàn bộ 100 câu kèm đáp án đúng. Đã nắm 0/100 câu.\n\nTất cả\nChưa nắm\nTìm trong số câu, đáp án, đoạn văn, tiêu đề tài liệu\nCâu hay sai từ lịch sử\n\nTổng hợp từ 1 lần làm bài đã lưu trên trình duyệt này (top 10). Bấm vào số câu để nhảy tới câu đó.\n\nCÂU\tPART\tĐÁP ÁN\tSỐ LẦN SAI / 1 LẦN LÀM\n2\t5\tD\t1 lần\n3\t5\tB\t1 lần\n4\t5\tA\t1 lần\n5\t5\tD\t1 lần\n6\t5\tC\t1 lần\n7\t5\tB\t1 lần\n8\t5\tA\t1 lần\n9\t5\tA\t1 lần\n10\t5\tC\t1 lần\n11\t5\tB\t1 lần\nPart 5 · Điền từ/cụm từ\nCâu Câu 1–30\nQuestions"
+    }
+  },
+  "listeningChecks": {
+    "questionNodes": 100,
+    "hasOnTap": true,
+    "monogramTR": true,
+    "hasListening": true
+  },
+  "homeChecks": {
+    "hasListening": true,
+    "hasReading": true,
+    "textSample": "TR\nTOEIC REVISION\nLISTENING · READING · 28/11/2026\nTrang chủ\nListening\nReading\n\nTOEIC · LISTENING & READING\n\nTOEIC REVISION.\n\nLuyện trọn bộ 200 câu Listening + Reading — làm lại nhiều lần, theo dõi tiến bộ.\n\nLàm Listening\n→\nLàm Reading\nÔn tập Listening\nÔn tập Reading\n100 câu Listening\n~45 phút\n100 câu Reading\n~75 phút\nLàm lại nhiều lần\n\nOFFICIAL PRACTICE EXAM\n\nTOEIC REVISION\n\n28.11.2026\n\nLISTENING · 45 MINUTES\n\nREADING · 75 MINUTES\n\nTOEIC LISTENING / READING\nTR\nCHỌN BÀI LUYỆN\nListening\n100 câu · ~45 phút · Part I–IV\nNghe lời thoại, nhận câu hỏi, chọn đáp án\nTranscript & đáp án cho mọi câu\nLàm Listening\nÔn tập & đáp án\nReading\n100 câu · ~75 phút · Part 5–7\nĐiền từ/cụm từ, hoàn thành đoạn văn,"
+  },
+  "otherRoutes": {
+    "/results": "TR\nTOEIC REVISION\nLISTENING · READING · 28/11/2026\nTrang chủ\nListening\nReading\nKhông tìm thấy kết quả\n\nAttempt “(trống)” không có trong lịch sử của trình duyệt này. Có thể bạn đã xoá lịch sử ôn tập.\n\nLàm bài ngay\nVề trang chủ",
+    "/review": "TR\nTOEIC REVISION\nLISTENING · READING · 28/11/2026\nTrang chủ\nListening\nReading\n\nLISTENING REVISION · 28/11/2026\n\n0.8x\n1.0x\nXoá lịch sử & trạng thái đã nắm\nÔn tập & đáp án\n\nToàn bộ 100 câu kèm đáp án đúng và transcript (cue (n) được highlight). Đã nắm 0/100 câu.\n\nTất cả\nChưa nắm\nTìm trong câu hỏi, đá"
+  },
+  "finishedAt": "2026-11-20T09:32:07.428Z"
+}

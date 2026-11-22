@@ -1,0 +1,22 @@
+{
+  "pages": {
+    "hub": {
+      "shot": "font-prod-hub.png",
+      "font": "\"Segoe UI\", system-ui, -apple-system, \"Noto Sans\", \"Helvetica Neue\", Arial, sans-serif",
+      "errors": 0,
+      "exceptions": 0
+    },
+    "home": {
+      "shot": "font-prod-home.png",
+      "font": "\"Segoe UI\", system-ui, -apple-system, \"Noto Sans\", \"Helvetica Neue\", Arial, sans-serif",
+      "errors": 0,
+      "exceptions": 0
+    },
+    "review": {
+      "shot": "font-prod-review.png",
+      "font": "\"Segoe UI\", system-ui, -apple-system, \"Noto Sans\", \"Helvetica Neue\", Arial, sans-serif",
+      "errors": 0,
+      "exceptions": 0
+    }
+  }
+}

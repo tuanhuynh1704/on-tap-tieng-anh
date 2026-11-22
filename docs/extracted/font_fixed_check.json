@@ -1,0 +1,23 @@
+{
+  "pages": {
+    "hub": {
+      "shot": "font-fixed-hub.png",
+      "errors": 0,
+      "exceptions": 0,
+      "headingFont": "Georgia, \"Times New Roman\", \"Noto Serif\", serif"
+    },
+    "home": {
+      "shot": "font-fixed-home.png",
+      "errors": 0,
+      "exceptions": 0,
+      "headingFont": "Georgia, \"Times New Roman\", \"Noto Serif\", serif"
+    },
+    "review": {
+      "shot": "font-fixed-review.png",
+      "errors": 0,
+      "exceptions": 0,
+      "headingFont": "Georgia, \"Times New Roman\", \"Noto Serif\", serif"
+    }
+  },
+  "errors": []
+}

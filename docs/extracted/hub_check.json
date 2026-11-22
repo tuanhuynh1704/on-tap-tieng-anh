@@ -1,0 +1,36 @@
+{
+  "result": {
+    "badges": [
+      "P5",
+      "P6",
+      "P7"
+    ],
+    "headings": [
+      "Part 5 · Điền từ/cụm từ",
+      "Part 6 · Đoạn văn",
+      "Part 7 · Đọc hiểu"
+    ],
+    "overflow": [
+      {
+        "badgeBottom": 489,
+        "headingTop": 501,
+        "overlap": false
+      },
+      {
+        "badgeBottom": 489,
+        "headingTop": 501,
+        "overlap": false
+      },
+      {
+        "badgeBottom": 489,
+        "headingTop": 501,
+        "overlap": false
+      }
+    ],
+    "scrollWidth": 1200,
+    "innerWidth": 1200
+  },
+  "errors": [],
+  "exceptions": [],
+  "screenshot": "reading-hub-fixed.png"
+}
