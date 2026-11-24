@@ -7,11 +7,7 @@ import ConfirmDialog from "@/components/ConfirmDialog";
 import SiteHeader from "@/components/SiteHeader";
 import { TOTAL_QUESTIONS, getQuestionById } from "@/data/exam";
 import { formatScaledScore } from "@/lib/scoring";
-import {
-  READING_PART_META,
-  READING_TOTAL_QUESTIONS,
-  getReadingQuestionById,
-} from "@/data/reading";
+import { READING_TOTAL_QUESTIONS, getReadingQuestionById } from "@/data/reading";
 import { clearDraft, clearHistoryAndMastered, computeStats, loadHistory, loadMastered } from "@/lib/storage";
 import {
   clearHistoryAndMastered as clearReadingHistoryAndMastered,
@@ -131,6 +127,12 @@ export default function HomePage() {
                   className="inline-flex min-h-[52px] items-center rounded-xl border-2 border-brand bg-white px-7 py-4 text-base font-extrabold text-brand-dark transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-card active:scale-[0.98]"
                 >
                   Ôn tập Reading
+                </Link>
+                <Link
+                  href="/explanations"
+                  className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-accent bg-accent-soft px-5 py-3 text-sm font-extrabold text-accent-dark transition-all hover:-translate-y-0.5 hover:bg-accent/20"
+                >
+                  Giải thích 200 câu →
                 </Link>
               </div>
 
@@ -369,6 +371,7 @@ export default function HomePage() {
             </div>
           </section>
         </div>
+
       </main>
 
       <footer className="border-t border-line bg-paper px-4 py-5">

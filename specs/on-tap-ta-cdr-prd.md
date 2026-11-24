@@ -10,7 +10,8 @@ Mục tiêu: **một bài ôn duy nhất, 100 câu, ôn đi ôn lại nhiều l�
 - **Chế độ Ôn tập** (`/review`): xem toàn bộ 100 câu cùng đáp án + script/hội thoại/transcript; lọc theo Part; đánh dấu “đã nắm / chưa nắm” (localStorage); liệt kê câu sai nhiều nhất từ lịch sử.
 - **TTS**: đọc transcript tiếng Anh bằng Web Speech API (`speechSynthesis`), nút “Nghe” mỗi Part I (đọc 4 mệnh đề), Part II (đọc câu hỏi + 3 đáp án) và mỗi group Part III/IV (đọc theo lượt thoại). Tốc độ: 0.8x / 1.0x. Ẩn nút + ghi chú nếu trình duyệt không hỗ trợ.
 - **Lịch sử & thống kê** (localStorage): số lần làm, điểm tốt nhất, điểm trung bình, top câu sai nhiều nhất, nút “Xoá lịch sử”. Draft đang làm dở được lưu để không mất khi reload.
-- Trang chủ (`/`): giới thiệu đề, thống kê cá nhân, nút “Bắt đầu làm bài” / “Vào ôn tập”.
+- Trang chủ (`/`): giới thiệu đề, thống kê cá nhân, nút “Bắt đầu làm bài” / “Vào ôn tập”, liên kết đến thư viện giải thích.
+- Thư viện giải thích (`/explanations`): tra cứu lời giải cho toàn bộ 200 câu Listening và Reading.
 - Ảnh PART I và 5 graphic (Q63, Q66, Q69, Q97, Q99) lấy từ `public/exam/`.
 - UI tiếng Việt; nội dung đề tiếng Anh giữ nguyên gốc.
 

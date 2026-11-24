@@ -54,7 +54,8 @@ Tổng: **100 câu**, thời gian **75:00**.
 
 | Route | Nội dung |
 |---|---|
-| `/` | Trang chủ chung: giới thiệu 2 module Listening + Reading, thẻ đề, thống kê từng module |
+| `/` | Trang chủ chung: giới thiệu 2 module Listening + Reading, thẻ đề, thống kê từng module, liên kết đến thư viện giải thích |
+| `/explanations` | Thư viện tra cứu giải thích, bản dịch và đáp án của 200 câu Listening + Reading |
 | `/practice` | Listening practice (giữ nguyên hành vi hiện tại) |
 | `/results?id=` | Listening results (giữ nguyên) |
 | `/review` | Listening review (giữ nguyên) |
@@ -205,7 +206,7 @@ Chuỗi đáp án (để đối chiếu nhanh):
 - Không có backend, tài khoản, đồng bộ đám mây.
 - Không làm chế độ thi thử 200 câu Listening + Reading liên tục.
 - Không chấm điểm ETS chính thức; không đối chiếu bảng quy đổi ETS thật.
-- Không thêm tính năng dịch từng câu/giải thích ngữ pháp tự động.
+- Thư viện trên trang chủ cho phép chọn từng câu trong cả hai module để xem đáp án, manh mối, phân tích và loại phương án nhiễu.
 
 ## 13. Câu hỏi mở cho Founder
 
