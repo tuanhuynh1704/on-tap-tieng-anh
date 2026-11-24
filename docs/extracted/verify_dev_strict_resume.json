@@ -1,0 +1,738 @@
+{
+  "base": "http://localhost:3000",
+  "asserts": [
+    {
+      "name": "dev fresh: 0 selected",
+      "pass": true,
+      "actual": {
+        "visible": 100,
+        "selected": 0,
+        "flagged": 0,
+        "selectedIds": [],
+        "flaggedIds": [],
+        "timer": "45:00"
+      }
+    },
+    {
+      "name": "dev fresh: 0 flagged",
+      "pass": true,
+      "actual": {
+        "visible": 100,
+        "selected": 0,
+        "flagged": 0,
+        "selectedIds": [],
+        "flaggedIds": [],
+        "timer": "45:00"
+      }
+    },
+    {
+      "name": "dev fresh: timer 45:00",
+      "pass": true,
+      "actual": {
+        "visible": 100,
+        "selected": 0,
+        "flagged": 0,
+        "selectedIds": [],
+        "flaggedIds": [],
+        "timer": "45:00"
+      }
+    },
+    {
+      "name": "dev fresh: no draft",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "name": "dev answer: q1 selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [],
+          "timer": "44:59"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514515593
+        }
+      }
+    },
+    {
+      "name": "dev answer: draft has q1",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [],
+          "timer": "44:59"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514515593
+        }
+      }
+    },
+    {
+      "name": "dev resume: q1 still selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [],
+          "timer": "44:59"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514517346
+        }
+      }
+    },
+    {
+      "name": "dev resume: timer kept (~44:5x)",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [],
+          "timer": "44:59"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514517346
+        }
+      }
+    },
+    {
+      "name": "dev resume: draft has q1",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [],
+          "timer": "44:59"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514517346
+        }
+      }
+    },
+    {
+      "name": "dev resume flag: q1 selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 1,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [
+            "q-2"
+          ],
+          "timer": "44:58"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795514519960
+        }
+      }
+    },
+    {
+      "name": "dev resume flag: q2 flagged",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 1,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [
+            "q-2"
+          ],
+          "timer": "44:58"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795514519960
+        }
+      }
+    },
+    {
+      "name": "dev resume flag: draft flags has 2",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 1,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [
+            "q-2"
+          ],
+          "timer": "44:58"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795514519960
+        }
+      }
+    },
+    {
+      "name": "dev F5: q1 selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 1,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [
+            "q-2"
+          ],
+          "timer": "45:00"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795514521578
+        }
+      }
+    },
+    {
+      "name": "dev F5: q2 flagged",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 1,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [
+            "q-2"
+          ],
+          "timer": "45:00"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795514521578
+        }
+      }
+    },
+    {
+      "name": "dev F5: draft has q1 + flag 2",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 1,
+          "selectedIds": [
+            "q-1"
+          ],
+          "flaggedIds": [
+            "q-2"
+          ],
+          "timer": "45:00"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795514521578
+        }
+      }
+    },
+    {
+      "name": "dev mid CTA hero: 0 selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "selectedIds": [],
+          "flaggedIds": [],
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "dev mid CTA hero: 0 flagged",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "selectedIds": [],
+          "flaggedIds": [],
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "dev mid CTA hero: timer 45:00/44:5x",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "selectedIds": [],
+          "flaggedIds": [],
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "dev mid CTA hero: draft empty/absent",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "selectedIds": [],
+          "flaggedIds": [],
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "dev mid CTA card: 0 selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "selectedIds": [],
+          "flaggedIds": [],
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "dev mid CTA card: 0 flagged",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "selectedIds": [],
+          "flaggedIds": [],
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "dev mid CTA card: draft empty/absent",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "selectedIds": [],
+          "flaggedIds": [],
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "dev reading answer: q5 selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-5"
+          ],
+          "flaggedIds": [],
+          "timer": "74:59"
+        },
+        "draft": {
+          "answers": {
+            "5": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514527425
+        }
+      }
+    },
+    {
+      "name": "dev reading F5: q5 selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-5"
+          ],
+          "flaggedIds": [],
+          "timer": "75:00"
+        },
+        "draft": {
+          "answers": {
+            "5": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514528763
+        }
+      }
+    },
+    {
+      "name": "dev reading F5: draft has q5",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-5"
+          ],
+          "flaggedIds": [],
+          "timer": "75:00"
+        },
+        "draft": {
+          "answers": {
+            "5": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514528763
+        }
+      }
+    },
+    {
+      "name": "dev reading back: q5 selected",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "selectedIds": [
+            "q-5"
+          ],
+          "flaggedIds": [],
+          "timer": "75:00"
+        },
+        "draft": {
+          "answers": {
+            "5": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514530024
+        }
+      }
+    }
+  ],
+  "consoleByPage": [
+    {
+      "page": "/practice",
+      "errors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/",
+      "errors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/practice",
+      "errors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/practice",
+      "errors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/",
+      "errors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/",
+      "errors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/reading/practice",
+      "errors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/reading/practice",
+      "errors": [],
+      "exceptions": []
+    }
+  ],
+  "fresh": {
+    "visible": 100,
+    "selected": 0,
+    "flagged": 0,
+    "selectedIds": [],
+    "flaggedIds": [],
+    "timer": "45:00"
+  },
+  "afterAnswer": {
+    "counts": {
+      "visible": 100,
+      "selected": 1,
+      "flagged": 0,
+      "selectedIds": [
+        "q-1"
+      ],
+      "flaggedIds": [],
+      "timer": "44:59"
+    },
+    "draft": {
+      "answers": {
+        "1": "A"
+      },
+      "flags": [],
+      "savedAt": 1795514515593
+    }
+  },
+  "resume": {
+    "counts": {
+      "visible": 100,
+      "selected": 1,
+      "flagged": 0,
+      "selectedIds": [
+        "q-1"
+      ],
+      "flaggedIds": [],
+      "timer": "44:59"
+    },
+    "draft": {
+      "answers": {
+        "1": "A"
+      },
+      "flags": [],
+      "savedAt": 1795514517346
+    }
+  },
+  "resumeFlag": {
+    "counts": {
+      "visible": 100,
+      "selected": 1,
+      "flagged": 1,
+      "selectedIds": [
+        "q-1"
+      ],
+      "flaggedIds": [
+        "q-2"
+      ],
+      "timer": "44:58"
+    },
+    "draft": {
+      "answers": {
+        "1": "A"
+      },
+      "flags": [
+        2
+      ],
+      "savedAt": 1795514519960
+    }
+  },
+  "f5": {
+    "counts": {
+      "visible": 100,
+      "selected": 1,
+      "flagged": 1,
+      "selectedIds": [
+        "q-1"
+      ],
+      "flaggedIds": [
+        "q-2"
+      ],
+      "timer": "45:00"
+    },
+    "draft": {
+      "answers": {
+        "1": "A"
+      },
+      "flags": [
+        2
+      ],
+      "savedAt": 1795514521578
+    }
+  },
+  "midCta": {
+    "counts": {
+      "visible": 100,
+      "selected": 0,
+      "flagged": 0,
+      "selectedIds": [],
+      "flaggedIds": [],
+      "timer": "45:00"
+    },
+    "draft": null
+  },
+  "midCtaCard": {
+    "counts": {
+      "visible": 100,
+      "selected": 0,
+      "flagged": 0,
+      "selectedIds": [],
+      "flaggedIds": [],
+      "timer": "45:00"
+    },
+    "draft": null
+  },
+  "readingAnswer": {
+    "counts": {
+      "visible": 100,
+      "selected": 1,
+      "flagged": 0,
+      "selectedIds": [
+        "q-5"
+      ],
+      "flaggedIds": [],
+      "timer": "74:59"
+    },
+    "draft": {
+      "answers": {
+        "5": "A"
+      },
+      "flags": [],
+      "savedAt": 1795514527425
+    }
+  },
+  "readingF5": {
+    "counts": {
+      "visible": 100,
+      "selected": 1,
+      "flagged": 0,
+      "selectedIds": [
+        "q-5"
+      ],
+      "flaggedIds": [],
+      "timer": "75:00"
+    },
+    "draft": {
+      "answers": {
+        "5": "A"
+      },
+      "flags": [],
+      "savedAt": 1795514528763
+    }
+  },
+  "readingBack": {
+    "counts": {
+      "visible": 100,
+      "selected": 1,
+      "flagged": 0,
+      "selectedIds": [
+        "q-5"
+      ],
+      "flaggedIds": [],
+      "timer": "75:00"
+    },
+    "draft": {
+      "answers": {
+        "5": "A"
+      },
+      "flags": [],
+      "savedAt": 1795514530024
+    }
+  },
+  "restore": {
+    "restored": true
+  },
+  "allPass": true,
+  "allConsoleOk": true
+}

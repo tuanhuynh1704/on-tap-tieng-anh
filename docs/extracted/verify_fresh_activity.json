@@ -1,0 +1,408 @@
+{
+  "base": "http://127.0.0.1:3215",
+  "asserts": [
+    {
+      "name": "A: visible selected = 0 sau CTA hero",
+      "pass": true,
+      "actual": {
+        "countsAtStart": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "historyBeforeSubmit": 2,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null,
+        "historyAfter": 3
+      }
+    },
+    {
+      "name": "A: visible flagged = 0 sau CTA hero",
+      "pass": true,
+      "actual": {
+        "countsAtStart": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "historyBeforeSubmit": 2,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null,
+        "historyAfter": 3
+      }
+    },
+    {
+      "name": "A: timer ≈ 45:00/44:5x sau CTA hero",
+      "pass": true,
+      "actual": {
+        "countsAtStart": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "historyBeforeSubmit": 2,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null,
+        "historyAfter": 3
+      }
+    },
+    {
+      "name": "A: draft rỗng hoặc không có",
+      "pass": true,
+      "actual": {
+        "countsAtStart": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "historyBeforeSubmit": 2,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null,
+        "historyAfter": 3
+      }
+    },
+    {
+      "name": "A: history tăng đúng 1 so với trước nộp",
+      "pass": true,
+      "actual": {
+        "countsAtStart": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "historyBeforeSubmit": 2,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null,
+        "historyAfter": 3
+      }
+    },
+    {
+      "name": "B: selected = 0",
+      "pass": true,
+      "actual": {
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "B: flagged = 0",
+      "pass": true,
+      "actual": {
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "B: timer ≈ 45:00/44:5x",
+      "pass": true,
+      "actual": {
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "B: draft rỗng hoặc không có",
+      "pass": true,
+      "actual": {
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "45:00"
+        },
+        "draft": null
+      }
+    },
+    {
+      "name": "C: câu 1 vẫn được chọn (resume qua nav)",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "timer": "44:58"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514085897
+        }
+      }
+    },
+    {
+      "name": "C: draft có câu 1",
+      "pass": true,
+      "actual": {
+        "counts": {
+          "visible": 100,
+          "selected": 1,
+          "flagged": 0,
+          "timer": "44:58"
+        },
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795514085897
+        }
+      }
+    },
+    {
+      "name": "D: F5 giữ câu 3 đã chọn",
+      "pass": true,
+      "actual": {
+        "selectedIds": [
+          "q-1",
+          "q-3"
+        ],
+        "counts": {
+          "visible": 100,
+          "selected": 2,
+          "flagged": 0,
+          "timer": "44:59"
+        }
+      }
+    },
+    {
+      "name": "E: visible selected = 0",
+      "pass": true,
+      "actual": {
+        "readingHistoryBeforeSubmit": 0,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "74:59"
+        },
+        "draft": null,
+        "readingHistoryAfter": 1
+      }
+    },
+    {
+      "name": "E: visible flagged = 0",
+      "pass": true,
+      "actual": {
+        "readingHistoryBeforeSubmit": 0,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "74:59"
+        },
+        "draft": null,
+        "readingHistoryAfter": 1
+      }
+    },
+    {
+      "name": "E: timer ≈ 75:00–75:09",
+      "pass": true,
+      "actual": {
+        "readingHistoryBeforeSubmit": 0,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "74:59"
+        },
+        "draft": null,
+        "readingHistoryAfter": 1
+      }
+    },
+    {
+      "name": "E: reading draft rỗng hoặc không có",
+      "pass": true,
+      "actual": {
+        "readingHistoryBeforeSubmit": 0,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "74:59"
+        },
+        "draft": null,
+        "readingHistoryAfter": 1
+      }
+    },
+    {
+      "name": "E: reading history tăng đúng 1",
+      "pass": true,
+      "actual": {
+        "readingHistoryBeforeSubmit": 0,
+        "afterCta": {
+          "visible": 100,
+          "selected": 0,
+          "flagged": 0,
+          "timer": "74:59"
+        },
+        "draft": null,
+        "readingHistoryAfter": 1
+      }
+    }
+  ],
+  "prodServer": {
+    "pid": 19920,
+    "ready": true
+  },
+  "rawBefore": {
+    "cdr.draft.v1": null,
+    "cdr.history.v1": "[{\"id\":\"attempt-1795513990492-r2pipa\",\"date\":1795513990492,\"raw\":1,\"scaled\":5,\"perPart\":[{\"part\":1,\"correct\":1,\"total\":6},{\"part\":2,\"correct\":0,\"total\":25},{\"part\":3,\"correct\":0,\"total\":39},{\"part\":4,\"correct\":0,\"total\":30}],\"answers\":{\"1\":\"A\"}},{\"id\":\"attempt-1795513996979-uwxbti\",\"date\":1795513996979,\"raw\":1,\"scaled\":5,\"perPart\":[{\"part\":1,\"correct\":1,\"total\":6},{\"part\":2,\"correct\":0,\"total\":25},{\"part\":3,\"correct\":0,\"total\":39},{\"part\":4,\"correct\":0,\"total\":30}],\"answers\":{\"1\":\"A\"}}]",
+    "cdr.mastered.v1": null,
+    "cdr.reading.draft.v1": null,
+    "cdr.reading.history.v1": null,
+    "cdr.reading.mastered.v1": null
+  },
+  "testA_founder_flow": {
+    "countsAtStart": {
+      "visible": 100,
+      "selected": 0,
+      "flagged": 0,
+      "timer": "45:00"
+    },
+    "historyBeforeSubmit": 2,
+    "afterCta": {
+      "visible": 100,
+      "selected": 0,
+      "flagged": 0,
+      "timer": "45:00"
+    },
+    "draft": null,
+    "historyAfter": 3
+  },
+  "testB_draft_abandoned": {
+    "afterCta": {
+      "visible": 100,
+      "selected": 0,
+      "flagged": 0,
+      "timer": "45:00"
+    },
+    "draft": null
+  },
+  "testC_resume_valid": {
+    "counts": {
+      "visible": 100,
+      "selected": 1,
+      "flagged": 0,
+      "timer": "44:58"
+    },
+    "draft": {
+      "answers": {
+        "1": "A"
+      },
+      "flags": [],
+      "savedAt": 1795514085897
+    }
+  },
+  "testD_f5_resume": {
+    "selectedIds": [
+      "q-1",
+      "q-3"
+    ],
+    "counts": {
+      "visible": 100,
+      "selected": 2,
+      "flagged": 0,
+      "timer": "44:59"
+    }
+  },
+  "testE_reading_flow": {
+    "readingHistoryBeforeSubmit": 0,
+    "afterCta": {
+      "visible": 100,
+      "selected": 0,
+      "flagged": 0,
+      "timer": "74:59"
+    },
+    "draft": null,
+    "readingHistoryAfter": 1
+  },
+  "consoleByPage": [
+    {
+      "route": "/",
+      "consoleErrors": [],
+      "exceptions": []
+    },
+    {
+      "route": "/practice",
+      "consoleErrors": [],
+      "exceptions": []
+    },
+    {
+      "route": "/results",
+      "consoleErrors": [],
+      "exceptions": []
+    },
+    {
+      "route": "/reading",
+      "consoleErrors": [],
+      "exceptions": []
+    },
+    {
+      "route": "/reading/practice",
+      "consoleErrors": [],
+      "exceptions": []
+    },
+    {
+      "route": "/reading/results",
+      "consoleErrors": [],
+      "exceptions": []
+    }
+  ],
+  "allConsoleOk": true,
+  "restore": {
+    "restored": true,
+    "error": null
+  },
+  "killSignaled": true,
+  "serverDownConfirmed": true,
+  "killFallbackPid": 27176,
+  "allAssertsPass": true
+}

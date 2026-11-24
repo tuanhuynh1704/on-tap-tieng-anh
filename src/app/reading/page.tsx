@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import SiteHeader from "@/components/SiteHeader";
 import { READING_PART_META, getReadingQuestionsByPart } from "@/data/reading";
-import { clearHistoryAndMastered, computeStats, loadHistory, loadMastered } from "@/lib/reading-storage";
+import { clearDraft, clearHistoryAndMastered, computeStats, loadHistory, loadMastered } from "@/lib/reading-storage";
 
 const PART_INFO = [
   {
@@ -64,6 +64,7 @@ export default function ReadingHubPage() {
             <div className="flex items-center gap-3">
               <Link
                 href="/reading/practice"
+                onClick={() => clearDraft()}
                 className="inline-flex min-h-[52px] items-center rounded-xl bg-[#d97706] px-7 py-4 text-base font-extrabold text-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#b45309] hover:shadow-lift active:scale-[0.98]"
               >
                 Bắt đầu làm bài <span aria-hidden="true">→</span>

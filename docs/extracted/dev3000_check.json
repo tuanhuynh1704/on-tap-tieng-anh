@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:3000/practice",
+  "selected": 0,
+  "flagged": 0,
+  "timer": "45:00",
+  "draft": {
+    "answers": {},
+    "flags": [],
+    "savedAt": 1795512023857
+  },
+  "consoleErrors": [],
+  "exceptions": [],
+  "dev3000Pass": true
+}

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import QuestionPanel from "@/components/QuestionPanel";
 import SpeakButton from "@/components/SpeakButton";
@@ -18,6 +18,9 @@ import { speechTextForQuestion, type SpeechRate } from "@/lib/tts";
 import { clearDraft, loadDraft, saveAttempt, saveDraft } from "@/lib/storage";
 
 const TOTAL_SECONDS = 45 * 60;
+
+// isomorphic: trên server chạy useEffect, trên client chạy useLayoutEffect (trước paint).
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 function formatTime(total: number): string {
   const m = Math.floor(total / 60).toString().padStart(2, "0");
@@ -37,14 +40,32 @@ export default function PracticePage() {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [currentId, setCurrentId] = useState(1);
+  // Chặn auto-save ghi đáp án cũ trở lại trong chu kỳ fresh-reset của StrictMode
+  // (effect chạy 2 lần; lần 1 đã reset + clearDraft, lần 2 chỉ khôi phục state cũ).
+  const freshResetRef = useRef(false);
 
-  // Nạp draft khi mount (chỉ client)
-  useEffect(() => {
+  // Đối chiếu draft mỗi lần trang trở nên hiển thị — Activity của Next giữ state/DOM
+  // khi điều hướng, nên layout effect chạy lại khi Activity hiện:
+  // có draft → khôi phục; không có draft → reset toàn bộ lượt làm bài mới.
+  useIsomorphicLayoutEffect(() => {
     const draft = loadDraft();
-    if (draft && (draft.answers && Object.keys(draft.answers).length > 0 || draft.flags && draft.flags.length > 0)) {
+    const hasDraftContent = !!draft && (Object.keys(draft.answers).length > 0 || draft.flags.length > 0);
+    if (hasDraftContent) {
+      freshResetRef.current = false;
       setAnswers(draft.answers);
       setFlags(draft.flags);
       setSavedAt(draft.savedAt);
+    } else {
+      freshResetRef.current = true;
+      setAnswers({});
+      setFlags([]);
+      setSavedAt(null);
+      setTimeLeft(TOTAL_SECONDS);
+      setTimerOn(true);
+      setCurrentId(1);
+      setSheetOpen(false);
+      setConfirmOpen(false);
+      clearDraft();
     }
     setHydrated(true);
   }, []);
@@ -52,6 +73,9 @@ export default function PracticePage() {
   // Auto-save draft khi answers/flags đổi (sau khi đã hydrate)
   useEffect(() => {
     if (!hydrated) return;
+    // Luôn chặn khi đang ở lượt mới (StrictMode chạy 2 lần: lần đầu có closure
+    // answers cũ → chặn để không ghi draft cũ trở lại).
+    if (freshResetRef.current) return;
     const d = saveDraft(answers, flags);
     setSavedAt(d.savedAt);
   }, [answers, flags, hydrated]);
@@ -85,7 +109,13 @@ export default function PracticePage() {
   }
 
   function toggleFlag(id: number) {
+    freshResetRef.current = false;
     setFlags((prev) => (prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]));
+  }
+
+  function selectAnswer(id: number, key: string) {
+    freshResetRef.current = false;
+    setAnswers((prev) => ({ ...prev, [id]: key }));
   }
 
   function jumpTo(id: number) {
@@ -180,7 +210,7 @@ export default function PracticePage() {
                 type="button"
                 role="radio"
                 aria-checked={selected}
-                onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: opt.key }))}
+                onClick={() => selectAnswer(q.id, opt.key)}
                 className={`flex min-h-[44px] items-start gap-3 rounded-xl border px-3 py-2.5 text-left text-sm leading-6 transition-colors ${
                   selected
                     ? "border-brand bg-brand-soft font-semibold text-brand-dark"

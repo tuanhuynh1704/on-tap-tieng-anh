@@ -11,7 +11,7 @@ import {
   READING_TOTAL_QUESTIONS,
   getReadingQuestionById,
 } from "@/data/reading";
-import { clearHistoryAndMastered, computeStats, loadHistory, loadMastered } from "@/lib/storage";
+import { clearDraft, clearHistoryAndMastered, computeStats, loadHistory, loadMastered } from "@/lib/storage";
 import {
   clearHistoryAndMastered as clearReadingHistoryAndMastered,
   computeStats as computeReadingStats,
@@ -108,6 +108,7 @@ export default function HomePage() {
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <Link
                   href="/practice"
+                  onClick={() => clearDraft()}
                   className="inline-flex min-h-[52px] items-center rounded-xl bg-[#d97706] px-7 py-4 text-base font-extrabold text-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#b45309] hover:shadow-lift active:scale-[0.98]"
                 >
                   Làm Listening <span aria-hidden="true">→</span>
@@ -196,6 +197,7 @@ export default function HomePage() {
               <div className="mt-4 flex flex-wrap gap-2">
                 <Link
                   href="/practice"
+                  onClick={() => clearDraft()}
                   className="inline-flex min-h-[48px] items-center rounded-xl bg-cta px-6 py-3.5 text-sm font-extrabold text-white shadow-card transition-all hover:-translate-y-0.5 hover:bg-cta-dark active:scale-[0.98]"
                 >
                   Làm Listening

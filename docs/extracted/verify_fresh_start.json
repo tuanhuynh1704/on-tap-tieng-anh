@@ -1,0 +1,449 @@
+{
+  "base": "http://127.0.0.1:3211",
+  "prodServer": {
+    "pid": 1120,
+    "ready": true
+  },
+  "asserts": [
+    {
+      "name": "listening hero (/): draft cleared (absent or 0 answers)",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "1": "A",
+            "2": "B",
+            "3": "C"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512032724
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "timerText": "45:00",
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "listening hero (/): 0 answers selected",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "1": "A",
+            "2": "B",
+            "3": "C"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512032724
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "timerText": "45:00",
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "listening hero (/): timer ≈ 45:00 / 44:5x",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "1": "A",
+            "2": "B",
+            "3": "C"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512032724
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "timerText": "45:00",
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "listening hero (/): history still 1 attempt",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "1": "A",
+            "2": "B",
+            "3": "C"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512032724
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "timerText": "45:00",
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "f5 reg: answer of q-1 still selected after reload",
+      "pass": true,
+      "actual": {
+        "selectedCount": 1,
+        "selectedKeys": [
+          "A"
+        ],
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795512033458
+        }
+      }
+    },
+    {
+      "name": "f5 reg: draft has exactly 1 answer (key \"1\"), answers[\"1\"] === clickedKey",
+      "pass": true,
+      "actual": {
+        "selectedCount": 1,
+        "selectedKeys": [
+          "A"
+        ],
+        "draft": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795512033458
+        }
+      }
+    },
+    {
+      "name": "f5 reg: draft had 1 answer right after click",
+      "pass": true,
+      "actual": {
+        "clickedKey": "A",
+        "draftAfterClick": {
+          "answers": {
+            "1": "A"
+          },
+          "flags": [],
+          "savedAt": 1795512032932
+        },
+        "afterReload": {
+          "selectedCount": 1,
+          "selectedKeys": [
+            "A"
+          ],
+          "draft": {
+            "answers": {
+              "1": "A"
+            },
+            "flags": [],
+            "savedAt": 1795512033458
+          }
+        }
+      }
+    },
+    {
+      "name": "listening card (/): draft cleared (absent or 0 answers)",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "1": "A",
+            "2": "B",
+            "3": "C"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512035491
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "timerText": "45:00",
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "listening card (/): 0 answers selected",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "1": "A",
+            "2": "B",
+            "3": "C"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512035491
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "timerText": "45:00",
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "listening card (/): timer ≈ 45:00 / 44:5x",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "1": "A",
+            "2": "B",
+            "3": "C"
+          },
+          "flags": [
+            2
+          ],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512035491
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "timerText": "45:00",
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "reading hero (/reading): reading draft cleared (absent or 0 answers)",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "5": "A",
+            "6": "B",
+            "7": "C"
+          },
+          "flags": [],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512037585
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "reading hero (/reading): 0 answers selected",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "5": "A",
+            "6": "B",
+            "7": "C"
+          },
+          "flags": [],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512037585
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "historyLenAfter": 1
+      }
+    },
+    {
+      "name": "reading hero (/reading): reading history still 1 attempt",
+      "pass": true,
+      "actual": {
+        "beforeDraft": {
+          "answers": {
+            "5": "A",
+            "6": "B",
+            "7": "C"
+          },
+          "flags": [],
+          "savedAt": 1795512028352
+        },
+        "draftAfter": {
+          "answers": {},
+          "flags": [],
+          "savedAt": 1795512037585
+        },
+        "answersCount": 0,
+        "selectedCount": 0,
+        "historyLenAfter": 1
+      }
+    }
+  ],
+  "consoleByPage": [
+    {
+      "page": "/",
+      "consoleErrors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/practice",
+      "consoleErrors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/",
+      "consoleErrors": [],
+      "exceptions": []
+    },
+    {
+      "page": "/reading",
+      "consoleErrors": [],
+      "exceptions": []
+    }
+  ],
+  "rawBefore": {
+    "cdr.draft.v1": null,
+    "cdr.history.v1": null,
+    "cdr.mastered.v1": null,
+    "cdr.reading.draft.v1": null,
+    "cdr.reading.history.v1": null,
+    "cdr.reading.mastered.v1": null
+  },
+  "test1_listening_hero": {
+    "beforeDraft": {
+      "answers": {
+        "1": "A",
+        "2": "B",
+        "3": "C"
+      },
+      "flags": [
+        2
+      ],
+      "savedAt": 1795512028352
+    },
+    "draftAfter": {
+      "answers": {},
+      "flags": [],
+      "savedAt": 1795512032724
+    },
+    "answersCount": 0,
+    "selectedCount": 0,
+    "timerText": "45:00",
+    "historyLenAfter": 1
+  },
+  "test2_f5_regression": {
+    "clickedKey": "A",
+    "draftAfterClick": {
+      "answers": {
+        "1": "A"
+      },
+      "flags": [],
+      "savedAt": 1795512032932
+    },
+    "afterReload": {
+      "selectedCount": 1,
+      "selectedKeys": [
+        "A"
+      ],
+      "draft": {
+        "answers": {
+          "1": "A"
+        },
+        "flags": [],
+        "savedAt": 1795512033458
+      }
+    }
+  },
+  "test3_listening_card": {
+    "beforeDraft": {
+      "answers": {
+        "1": "A",
+        "2": "B",
+        "3": "C"
+      },
+      "flags": [
+        2
+      ],
+      "savedAt": 1795512028352
+    },
+    "draftAfter": {
+      "answers": {},
+      "flags": [],
+      "savedAt": 1795512035491
+    },
+    "answersCount": 0,
+    "selectedCount": 0,
+    "timerText": "45:00",
+    "historyLenAfter": 1
+  },
+  "test4_reading_hero": {
+    "beforeDraft": {
+      "answers": {
+        "5": "A",
+        "6": "B",
+        "7": "C"
+      },
+      "flags": [],
+      "savedAt": 1795512028352
+    },
+    "draftAfter": {
+      "answers": {},
+      "flags": [],
+      "savedAt": 1795512037585
+    },
+    "answersCount": 0,
+    "selectedCount": 0,
+    "historyLenAfter": 1
+  },
+  "kill": {
+    "pid": 1120,
+    "signaled": true,
+    "serverDownConfirmed": false,
+    "fallbackUsed": false,
+    "fallbackPid": null
+  },
+  "restore": {
+    "rawBefore": "{\"cdr.draft.v1\":null,\"cdr.history.v1\":null,\"cdr.mastered.v1\":null,\"cdr.reading.draft.v1\":null,\"cdr.reading.history.v1\":null,\"cdr.reading.mastered.v1\":null}",
+    "restored": true
+  },
+  "allAssertsPass": true
+}

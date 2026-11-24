@@ -1,0 +1,63 @@
+# repro_submit_flow on dev :3000 (StrictMode) — after fix
+
+===== RUN 1 =====
+{
+  "draftAfterAnswer": {
+    "answers": {
+      "1": "A"
+    },
+    "flags": [],
+    "savedAt": 1795513989839
+  },
+  "openDialog": 1,
+  "confirm": true,
+  "resultsUrl": "http://localhost:3000/results?id=attempt-1795513990492-r2pipa",
+  "draftAfterSubmit": null,
+  "historyLen": 1,
+  "homeClick": true,
+  "ctaClick": 2,
+  "afterCta": {
+    "url": "http://localhost:3000/practice",
+    "selected": 0,
+    "flagged": 0,
+    "timer": "45:00",
+    "savedText": null,
+    "draft": null,
+    "draftEmpty": true
+  },
+  "consoleErrors": [],
+  "exceptions": []
+}
+
+[exit 0]
+
+===== RUN 2 =====
+{
+  "draftAfterAnswer": {
+    "answers": {
+      "1": "A"
+    },
+    "flags": [],
+    "savedAt": 1795513996346
+  },
+  "openDialog": 1,
+  "confirm": true,
+  "resultsUrl": "http://localhost:3000/results?id=attempt-1795513996979-uwxbti",
+  "draftAfterSubmit": null,
+  "historyLen": 2,
+  "homeClick": true,
+  "ctaClick": 2,
+  "afterCta": {
+    "url": "http://localhost:3000/practice",
+    "selected": 0,
+    "flagged": 0,
+    "timer": "45:00",
+    "savedText": null,
+    "draft": null,
+    "draftEmpty": true
+  },
+  "consoleErrors": [],
+  "exceptions": []
+}
+
+[exit 0]
