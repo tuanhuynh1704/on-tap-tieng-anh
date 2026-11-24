@@ -4,13 +4,13 @@
       "1": "A"
     },
     "flags": [],
-    "savedAt": 1795514137585
+    "savedAt": 1795515066070
   },
   "openDialog": 1,
   "confirm": true,
-  "resultsUrl": "http://localhost:3000/results?id=attempt-1795514138215-cx699v",
+  "resultsUrl": "http://localhost:3000/results?id=attempt-1795515066829-inum6h",
   "draftAfterSubmit": null,
-  "historyLen": 2,
+  "historyLen": 4,
   "homeClick": true,
   "ctaClick": 2,
   "afterCta": {
