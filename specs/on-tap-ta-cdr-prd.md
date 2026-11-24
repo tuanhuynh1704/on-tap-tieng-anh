@@ -6,7 +6,7 @@ Mục tiêu: **một bài ôn duy nhất, 100 câu, ôn đi ôn lại nhiều l�
 ## Phạm vi (in-scope)
 - Bài ôn hợp nhất 100 câu TOEIC Listening (Part I–IV), đúng thứ tự đề gốc.
 - **Chế độ Làm bài** (`/practice`): làm toàn bộ 100 câu trong một phiên; bộ đếm giờ 45:00 (bật/tắt); bảng điều hướng câu 1–100 (đã trả lời / chưa / đánh dấu); chấm khi nộp bài.
-- **Chấm điểm**: đúng/sai từng câu, điểm raw theo từng Part, quy đổi **ước lượng** ra thang TOEIC Listening 5–495 (linear: `round(raw/100*495/5)*5`, tối thiểu 5), **ghi rõ là ước lượng**; phân tích theo Part; liệt kê câu sai kèm đáp án đúng + transcript.
+- **Chấm điểm**: đúng/sai từng câu, điểm raw theo từng Part, quy đổi **ước lượng** theo công thức `raw * 4.95` (0–495, không làm tròn), **ghi rõ là ước lượng**; phân tích theo Part; liệt kê câu sai kèm đáp án đúng + transcript.
 - **Chế độ Ôn tập** (`/review`): xem toàn bộ 100 câu cùng đáp án + script/hội thoại/transcript; lọc theo Part; đánh dấu “đã nắm / chưa nắm” (localStorage); liệt kê câu sai nhiều nhất từ lịch sử.
 - **TTS**: đọc transcript tiếng Anh bằng Web Speech API (`speechSynthesis`), nút “Nghe” mỗi Part I (đọc 4 mệnh đề), Part II (đọc câu hỏi + 3 đáp án) và mỗi group Part III/IV (đọc theo lượt thoại). Tốc độ: 0.8x / 1.0x. Ẩn nút + ghi chú nếu trình duyệt không hỗ trợ.
 - **Lịch sử & thống kê** (localStorage): số lần làm, điểm tốt nhất, điểm trung bình, top câu sai nhiều nhất, nút “Xoá lịch sử”. Draft đang làm dở được lưu để không mất khi reload.

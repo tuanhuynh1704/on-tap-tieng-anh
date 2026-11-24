@@ -1,4 +1,4 @@
-import { scoreAnswers, type PerPartScore } from "@/lib/scoring";
+import { scaledFromRaw, scoreAnswers, type PerPartScore } from "@/lib/scoring";
 import { QUESTIONS } from "@/data/exam";
 
 export const DRAFT_KEY = "cdr.draft.v1";
@@ -71,7 +71,7 @@ export function loadHistory(): AttemptRecord[] {
     typeof a.answers === "object" && a.answers !== null && !Array.isArray(a.answers) &&
     typeof a.scaled === "number" && isFinite(a.scaled) &&
     Array.isArray(a.perPart)
-  );
+  ).map((a) => ({ ...a, scaled: scaledFromRaw(a.raw) }));
 }
 
 export function saveAttempt(answers: Record<number, string>): AttemptRecord {
@@ -154,7 +154,7 @@ export function computeStats(history: AttemptRecord[], topN = 3): HistoryStats {
     return { attempts: 0, bestScaled: null, avgScaled: null, mostMissed: [] };
   }
   const bestScaled = Math.max(...history.map((a) => a.scaled));
-  const avgScaled = Math.round(history.reduce((s, a) => s + a.scaled, 0) / history.length);
+  const avgScaled = history.reduce((s, a) => s + a.scaled, 0) / history.length;
   const wrongCount = new Map<number, number>();
   for (const attempt of history) {
     for (const q of QUESTIONS) {

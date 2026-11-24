@@ -12,9 +12,14 @@ export interface ScoreResult {
   perPart: PerPartScore[];
 }
 
-/** Quy đổi ước lượng raw (0–100) sang thang Listening 5–495. KHÔNG phải điểm ETS chính thức. */
+/** Quy đổi ước lượng raw (0–100) sang thang Listening 0–495 theo raw × 4.95. KHÔNG phải điểm ETS chính thức. */
 export function scaledFromRaw(raw: number): number {
-  return Math.max(5, Math.round((raw / 100) * 495 / 5) * 5);
+  return raw * 4.95;
+}
+
+/** Loại bỏ sai số biểu diễn thập phân khi hiển thị điểm quy đổi. */
+export function formatScaledScore(score: number): string {
+  return Number(score.toFixed(2)).toString();
 }
 
 export function scoreAnswers(answers: Record<number, string>): ScoreResult {

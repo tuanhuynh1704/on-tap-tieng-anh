@@ -37,6 +37,7 @@ export default function PracticePage() {
   const [timeLeft, setTimeLeft] = useState(TOTAL_SECONDS);
   const [timerOn, setTimerOn] = useState(true);
   const [rate, setRate] = useState<SpeechRate>(1);
+  const [showPart12Content, setShowPart12Content] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [currentId, setCurrentId] = useState(1);
@@ -63,6 +64,7 @@ export default function PracticePage() {
       setTimeLeft(TOTAL_SECONDS);
       setTimerOn(true);
       setCurrentId(1);
+      setShowPart12Content(false);
       setSheetOpen(false);
       setConfirmOpen(false);
       clearDraft();
@@ -204,6 +206,7 @@ export default function PracticePage() {
         <div className="mt-3 flex flex-col gap-2" role="radiogroup" aria-label={`Câu ${q.id} — chọn đáp án`}>
           {q.options.map((opt) => {
             const selected = chosen === opt.key;
+            const showContent = q.part > 2 || showPart12Content;
             return (
               <button
                 key={opt.key}
@@ -212,7 +215,7 @@ export default function PracticePage() {
                 aria-checked={selected}
                 onClick={() => selectAnswer(q.id, opt.key)}
                 className={`flex min-h-[44px] items-start gap-3 rounded-xl border px-3 py-2.5 text-left text-sm leading-6 transition-colors ${
-                  selected
+                    selected
                     ? "border-brand bg-brand-soft font-semibold text-brand-dark"
                     : "border-line bg-paper hover:border-brand"
                 }`}
@@ -226,7 +229,7 @@ export default function PracticePage() {
                 >
                   {opt.key}
                 </span>
-                <span>{opt.text}</span>
+                {showContent && <span>{opt.text}</span>}
               </button>
             );
           })}
@@ -271,6 +274,24 @@ export default function PracticePage() {
               ? `Đã lưu nháp lúc ${new Date(savedAt).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`
               : "Chưa có thay đổi"}
           </span>
+          <div className="flex items-center rounded-lg border border-line bg-white p-0.5 text-[11px] font-bold sm:text-xs" role="group" aria-label="Cách hiển thị lựa chọn Part I–II">
+            <button
+              type="button"
+              onClick={() => setShowPart12Content(false)}
+              aria-pressed={!showPart12Content}
+              className={`min-h-[36px] rounded-md px-2 py-1.5 ${!showPart12Content ? "bg-brand text-white" : "text-ink-soft hover:text-brand-dark"}`}
+            >
+              Chỉ hiện A/B/C/D
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowPart12Content(true)}
+              aria-pressed={showPart12Content}
+              className={`min-h-[36px] rounded-md px-2 py-1.5 ${showPart12Content ? "bg-brand text-white" : "text-ink-soft hover:text-brand-dark"}`}
+            >
+              A/B/C/D kèm nội dung
+            </button>
+          </div>
           <div className="ml-auto flex items-center gap-2">
             <div className="flex items-center rounded-lg border border-line bg-white p-0.5 text-xs font-bold" aria-label="Tốc độ đọc">
               {([0.8, 1] as SpeechRate[]).map((r) => (

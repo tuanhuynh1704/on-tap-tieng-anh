@@ -73,7 +73,7 @@ export function loadHistory(): AttemptRecord[] {
     typeof a.scaled === "number" && isFinite(a.scaled) &&
     Array.isArray(a.perPart) &&
     typeof a.answers === "object" && a.answers !== null && !Array.isArray(a.answers)
-  );
+  ).map((a) => ({ ...a, scaled: scaledFromRaw(a.raw) }));
 }
 
 export function saveAttempt(answers: Record<number, string>): AttemptRecord {
@@ -143,7 +143,7 @@ export function toggleMastered(id: number): Record<number, boolean> {
 }
 
 // ---------- Scoring ----------
-/** Chấm điểm Reading: raw 0–100; scaled ước lượng 5–495 (reuse scaledFromRaw). */
+/** Chấm điểm Reading: raw 0–100; scaled ước lượng 0–495 (reuse scaledFromRaw). */
 export function scoreReadingAnswers(answers: Record<number, string>): ScoreResult {
   const parts: ReadingPartNumber[] = [5, 6, 7];
   const perPart: PerPartScore[] = parts.map((part) => {
@@ -169,7 +169,7 @@ export function computeStats(history: AttemptRecord[], topN = 3): HistoryStats {
     return { attempts: 0, bestScaled: null, avgScaled: null, mostMissed: [] };
   }
   const bestScaled = Math.max(...history.map((a) => a.scaled));
-  const avgScaled = Math.round(history.reduce((s, a) => s + a.scaled, 0) / history.length);
+  const avgScaled = history.reduce((s, a) => s + a.scaled, 0) / history.length;
   const wrongCount = new Map<number, number>();
   for (const attempt of history) {
     for (const q of READING_QUESTIONS) {

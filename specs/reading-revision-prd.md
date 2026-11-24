@@ -136,7 +136,7 @@ Chuỗi đáp án (để đối chiếu nhanh):
 ## 6. Scoring
 
 - Raw = số câu đúng / 100.
-- Quy đổi ước lượng: `max(5, round(raw / 100 * 495 / 5) * 5)` — cùng công thức Listening, ghi rõ **ước lượng**, không phải ETS.
+- Quy đổi ước lượng: `raw * 4.95`, không làm tròn — cùng công thức Listening, ghi rõ **ước lượng**, không phải ETS.
 - Breakdown theo Part 5/6/7.
 - “Part cần ôn nhất” = Part có tỷ lệ đúng thấp nhất (tie → Part nhỏ hơn).
 - Lời khuyên riêng cho Reading:

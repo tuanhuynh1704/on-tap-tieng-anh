@@ -10,7 +10,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SpeakButton from "@/components/SpeakButton";
 import Transcript from "@/components/Transcript";
 import { PART_META, QUESTIONS, getGroupForQuestion, type ExamQuestion, type PartNumber, EXAM_DATE } from "@/data/exam";
-import { PART_ADVICE, weakestPart } from "@/lib/scoring";
+import { formatScaledScore, PART_ADVICE, weakestPart } from "@/lib/scoring";
 import { clearDraft, getAttempt, getPreviousAttempt, loadHistory } from "@/lib/storage";
 import { speechTextForQuestion, type SpeechRate } from "@/lib/tts";
 
@@ -165,11 +165,11 @@ export default function ResultsClient() {
             <div>
               <p className="text-sm font-semibold text-ink-soft">Điểm quy đổi Listening (ước lượng)</p>
               <p className="mt-0.5 font-display text-5xl font-bold font-tabular text-brand-dark">
-                {attempt.scaled}
+                {formatScaledScore(attempt.scaled)}
                 <span className="text-lg font-semibold text-ink-soft"> / 495</span>
               </p>
               <p className="mt-1 max-w-md text-[11px] leading-4 text-ink-soft">
-                ƯỚC LƯỢNG theo công thức tuyến tính raw × 4.95, làm tròn bội số 5, tối thiểu 5 — KHÔNG phải điểm ETS chính thức.
+                ƯỚC LƯỢNG theo công thức tuyến tính số câu đúng × 4.95 — KHÔNG phải điểm ETS chính thức.
               </p>
               {deltaScaled !== null && deltaRaw !== null && (
                 <span
@@ -182,7 +182,7 @@ export default function ResultsClient() {
                       ? <path d="M12 19V5m0 0l-5 5m5-5l5 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                       : <path d="M12 5v14m0 0l-5-5m5 5l5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />}
                   </svg>
-                  {deltaScaled >= 0 ? "+" : ""}{deltaScaled} điểm quy đổi ({deltaRaw >= 0 ? "+" : ""}{deltaRaw} câu đúng) so với lần trước
+                  {deltaScaled >= 0 ? "+" : ""}{formatScaledScore(deltaScaled)} điểm quy đổi ({deltaRaw >= 0 ? "+" : ""}{deltaRaw} câu đúng) so với lần trước
                 </span>
               )}
             </div>

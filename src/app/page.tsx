@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import SiteHeader from "@/components/SiteHeader";
 import { TOTAL_QUESTIONS, getQuestionById } from "@/data/exam";
+import { formatScaledScore } from "@/lib/scoring";
 import {
   READING_PART_META,
   READING_TOTAL_QUESTIONS,
@@ -301,11 +302,11 @@ export default function HomePage() {
                   </div>
                   <div className="rounded-xl bg-brand-soft p-3 ring-1 ring-brand/20">
                     <dt className="text-[11px] font-semibold uppercase text-ink-soft">Best (ước lượng)</dt>
-                    <dd className="mt-1 font-display text-2xl font-bold font-tabular text-brand-dark">{stats.bestScaled}</dd>
+                    <dd className="mt-1 font-display text-2xl font-bold font-tabular text-brand-dark">{stats.bestScaled === null ? "—" : formatScaledScore(stats.bestScaled)}</dd>
                   </div>
                   <div className="rounded-xl bg-paper p-3 ring-1 ring-line/60">
                     <dt className="text-[11px] font-semibold uppercase text-ink-soft">Trung bình</dt>
-                    <dd className="mt-1 font-display text-2xl font-bold font-tabular text-ink">{stats.avgScaled}</dd>
+                    <dd className="mt-1 font-display text-2xl font-bold font-tabular text-ink">{stats.avgScaled === null ? "—" : formatScaledScore(stats.avgScaled)}</dd>
                   </div>
                 </dl>
                 {stats.mostMissed.length > 0 && (
