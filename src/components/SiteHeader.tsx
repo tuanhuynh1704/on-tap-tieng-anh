@@ -8,7 +8,7 @@ const NAV = [
   {
     href: "/practice",
     label: "Listening",
-    match: (p: string) => p === "/practice" || p === "/results" || p === "/review",
+    match: (p: string) => p === "/practice" || p === "/results" || p === "/review" || p.startsWith("/listening/"),
   },
   {
     href: "/reading",

@@ -129,6 +129,12 @@ export default function HomePage() {
                   Ôn tập Reading
                 </Link>
                 <Link
+                  href="/listening/answer-check"
+                  className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-brand bg-brand-soft px-5 py-3 text-sm font-extrabold text-brand-dark transition-all hover:bg-brand/20"
+                >
+                  Học thuộc đáp án Listening 1–31
+                </Link>
+                <Link
                   href="/explanations"
                   className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-accent bg-accent-soft px-5 py-3 text-sm font-extrabold text-accent-dark transition-all hover:-translate-y-0.5 hover:bg-accent/20"
                 >
