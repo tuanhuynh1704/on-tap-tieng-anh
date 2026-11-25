@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import ConfirmDialog from "@/components/ConfirmDialog";
+import Modal from "@/components/Modal";
 import QuestionPanel from "@/components/QuestionPanel";
 import SpeakButton from "@/components/SpeakButton";
 import {
@@ -44,6 +45,29 @@ export default function PracticePage() {
   // Chặn auto-save ghi đáp án cũ trở lại trong chu kỳ fresh-reset của StrictMode
   // (effect chạy 2 lần; lần 1 đã reset + clearDraft, lần 2 chỉ khôi phục state cũ).
   const freshResetRef = useRef(false);
+  const pageRef = useRef<HTMLDivElement>(null);
+  const toolbarRef = useRef<HTMLElement>(null);
+
+  useIsomorphicLayoutEffect(() => {
+    const page = pageRef.current;
+    const toolbar = toolbarRef.current;
+    if (!page || !toolbar) return;
+    const partHeaders = page.querySelectorAll<HTMLElement>("[data-practice-part-header]");
+    const bottomBar = page.querySelector<HTMLElement>("[data-practice-bottom-bar]");
+    const updateSizes = () => {
+      page.style.setProperty("--practice-toolbar-height", `${toolbar.getBoundingClientRect().height}px`);
+      page.style.setProperty("--practice-bottom-bar-height", `${bottomBar?.getBoundingClientRect().height ?? 0}px`);
+      for (const header of partHeaders) {
+        header.parentElement?.style.setProperty("--practice-part-height", `${header.getBoundingClientRect().height}px`);
+      }
+    };
+    updateSizes();
+    const observer = new ResizeObserver(updateSizes);
+    observer.observe(toolbar);
+    if (bottomBar) observer.observe(bottomBar);
+    partHeaders.forEach((header) => observer.observe(header));
+    return () => observer.disconnect();
+  }, []);
 
   // Đối chiếu draft mỗi lần trang trở nên hiển thị — Activity của Next giữ state/DOM
   // khi điều hướng, nên layout effect chạy lại khi Activity hiện:
@@ -123,7 +147,11 @@ export default function PracticePage() {
   function jumpTo(id: number) {
     setCurrentId(id);
     setSheetOpen(false);
-    document.getElementById(`q-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.requestAnimationFrame(() => {
+      const question = document.getElementById(`q-${id}`);
+      question?.focus({ preventScroll: true });
+      question?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   }
 
   function renderQuestion(q: ExamQuestion) {
@@ -137,11 +165,12 @@ export default function PracticePage() {
       <section
         key={q.id}
         id={`q-${q.id}`}
+        tabIndex={-1}
         aria-label={`Câu ${q.id}`}
-        className="scroll-mt-24 rounded-2xl border border-line bg-white p-4 shadow-card transition-shadow duration-200 hover:shadow-lift sm:p-5"
+        className="min-w-0 scroll-mt-[calc(var(--practice-toolbar-height,57px)+var(--practice-part-height,80px)+0.75rem)] rounded-2xl border border-line bg-white p-4 shadow-card transition-shadow duration-200 hover:shadow-lift sm:p-5"
       >
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-sm font-extrabold text-white font-tabular shadow-sm">
               {q.id}
             </span>
@@ -208,18 +237,22 @@ export default function PracticePage() {
             const selected = chosen === opt.key;
             const showContent = q.part > 2 || showPart12Content;
             return (
-              <button
+              <label
                 key={opt.key}
-                type="button"
-                role="radio"
-                aria-checked={selected}
-                onClick={() => selectAnswer(q.id, opt.key)}
-                className={`flex min-h-[44px] items-start gap-3 rounded-xl border px-3 py-2.5 text-left text-sm leading-6 transition-colors ${
-                    selected
+                className={`flex min-h-[44px] cursor-pointer items-start gap-3 rounded-xl border px-3 py-2.5 text-left text-sm leading-6 transition-colors has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent ${
+                  selected
                     ? "border-brand bg-brand-soft font-semibold text-brand-dark"
                     : "border-line bg-paper hover:border-brand"
                 }`}
               >
+                <input
+                  type="radio"
+                  name={`listening-question-${q.id}`}
+                  value={opt.key}
+                  checked={selected}
+                  onChange={() => selectAnswer(q.id, opt.key)}
+                  className="sr-only"
+                />
                 <span
                   className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs font-bold ${
                     selected
@@ -229,8 +262,8 @@ export default function PracticePage() {
                 >
                   {opt.key}
                 </span>
-                {showContent && <span>{opt.text}</span>}
-              </button>
+                {showContent && <span className="min-w-0 [overflow-wrap:anywhere]">{opt.text}</span>}
+              </label>
             );
           })}
         </div>
@@ -239,21 +272,21 @@ export default function PracticePage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div ref={pageRef} className="flex min-h-screen flex-col bg-paper supports-[height:100dvh]:min-h-dvh">
       {/* Header dính — slim, giữ timer & controls */}
-      <header className="sticky top-0 z-40 border-b border-line/70 bg-paper/90 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-2 px-3 py-2 sm:px-4">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2" aria-label="TOEIC REVISION — Trang chủ">
+      <header ref={toolbarRef} className="sticky top-0 z-40 border-b border-line/70 bg-paper/90 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-3 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top))] sm:px-4">
+          <div className="flex shrink-0 items-center gap-3">
+            <Link href="/" className="flex min-h-[44px] min-w-[44px] items-center gap-2" aria-label="TOEIC REVISION — Trang chủ">
               <span className="grid h-7 w-7 place-items-center rounded-lg bg-brand font-display text-[11px] font-bold text-white">TR</span>
               <span className="hidden text-xs font-bold uppercase tracking-wider text-brand-dark sm:inline">Listening Revision</span>
             </Link>
-            <Link href="/review" className="hidden text-xs font-bold text-brand-dark hover:underline sm:inline" aria-label="Ôn tập Listening">
+            <Link href="/review" className="hidden min-h-[44px] items-center text-xs font-bold text-brand-dark hover:underline sm:inline-flex" aria-label="Ôn tập Listening">
               Ôn tập
             </Link>
           </div>
-          <div className="flex items-center gap-2" aria-label="Thời gian còn lại">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-ink-soft">
+          <div className="flex shrink-0 items-center gap-1.5" aria-label="Thời gian còn lại">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="hidden text-ink-soft sm:block">
               <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
               <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
@@ -264,65 +297,69 @@ export default function PracticePage() {
               type="button"
               onClick={() => setTimerOn((v) => !v)}
               aria-pressed={timerOn}
-              className="rounded-lg border border-line bg-white px-2.5 py-1.5 text-xs font-semibold text-ink hover:border-brand min-h-[36px]"
+              className="min-h-[44px] min-w-[44px] rounded-lg border border-line bg-white px-2 py-1.5 text-xs font-semibold text-ink hover:border-brand"
             >
               {timerOn ? "Tắt giờ" : "Bật giờ"}
             </button>
           </div>
-          <span className="hidden text-xs text-ink-soft sm:inline">
-            {savedAt
-              ? `Đã lưu nháp lúc ${new Date(savedAt).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`
-              : "Chưa có thay đổi"}
-          </span>
-          <div className="flex items-center rounded-lg border border-line bg-white p-0.5 text-[11px] font-bold sm:text-xs" role="group" aria-label="Cách hiển thị lựa chọn Part I–II">
-            <button
-              type="button"
-              onClick={() => setShowPart12Content(false)}
-              aria-pressed={!showPart12Content}
-              className={`min-h-[36px] rounded-md px-2 py-1.5 ${!showPart12Content ? "bg-brand text-white" : "text-ink-soft hover:text-brand-dark"}`}
-            >
-              Chỉ hiện A/B/C/D
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowPart12Content(true)}
-              aria-pressed={showPart12Content}
-              className={`min-h-[36px] rounded-md px-2 py-1.5 ${showPart12Content ? "bg-brand text-white" : "text-ink-soft hover:text-brand-dark"}`}
-            >
-              A/B/C/D kèm nội dung
-            </button>
-          </div>
-          <div className="ml-auto flex items-center gap-2">
-            <div className="flex items-center rounded-lg border border-line bg-white p-0.5 text-xs font-bold" aria-label="Tốc độ đọc">
+          <button
+            type="button"
+            onClick={() => setConfirmOpen(true)}
+            className="ml-auto min-h-[44px] shrink-0 rounded-lg bg-[#d97706] px-3 py-2.5 text-sm font-extrabold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#b45309] hover:shadow-card active:scale-[0.98]"
+          >
+            Nộp bài
+          </button>
+          <div className="flex w-full min-w-0 flex-wrap items-center gap-2 xl:w-auto xl:flex-1">
+            <div className="flex min-w-0 flex-1 items-stretch rounded-lg border border-line bg-white p-0.5 text-[11px] font-bold sm:flex-none sm:text-xs" role="group" aria-label="Cách hiển thị lựa chọn Part I–II">
+              <button
+                type="button"
+                onClick={() => setShowPart12Content(false)}
+                aria-pressed={!showPart12Content}
+                aria-label="Chỉ hiện A/B/C/D"
+                className={`min-h-[44px] min-w-[44px] flex-1 rounded-md px-2 py-1.5 ${!showPart12Content ? "bg-brand text-white" : "text-ink-soft hover:text-brand-dark"}`}
+              >
+                <span className="sm:hidden">Chỉ A/B/C/D</span>
+                <span className="hidden sm:inline">Chỉ hiện A/B/C/D</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowPart12Content(true)}
+                aria-pressed={showPart12Content}
+                aria-label="A/B/C/D kèm nội dung"
+                className={`min-h-[44px] min-w-[44px] flex-1 rounded-md px-2 py-1.5 ${showPart12Content ? "bg-brand text-white" : "text-ink-soft hover:text-brand-dark"}`}
+              >
+                <span className="sm:hidden">Kèm nội dung</span>
+                <span className="hidden sm:inline">A/B/C/D kèm nội dung</span>
+              </button>
+            </div>
+            <div className="flex shrink-0 items-center rounded-lg border border-line bg-white p-0.5 text-xs font-bold" role="group" aria-label="Tốc độ đọc">
               {([0.8, 1] as SpeechRate[]).map((r) => (
                 <button
                   key={r}
                   type="button"
                   onClick={() => setRate(r)}
                   aria-pressed={rate === r}
-                  className={`rounded-md px-2.5 py-1.5 min-h-[36px] ${rate === r ? "bg-brand text-white" : "text-ink-soft"}`}
+                  className={`min-h-[44px] min-w-[44px] rounded-md px-2 py-1.5 ${rate === r ? "bg-brand text-white" : "text-ink-soft"}`}
                 >
                   {r === 0.8 ? "0.8x" : "1.0x"}
                 </button>
               ))}
             </div>
-            <button
-              type="button"
-              onClick={() => setConfirmOpen(true)}
-              className="rounded-lg bg-[#d97706] px-4 py-2.5 text-sm font-extrabold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#b45309] hover:shadow-card min-h-[44px] active:scale-[0.98]"
-            >
-              Nộp bài
-            </button>
+            <span className="hidden text-xs text-ink-soft lg:inline">
+              {savedAt
+                ? `Đã lưu nháp lúc ${new Date(savedAt).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`
+                : "Chưa có thay đổi"}
+            </span>
           </div>
         </div>
       </header>
 
       {/* Nội dung chính + sidebar desktop — khung giấy đề thi */}
-      <div className="mx-auto grid w-full max-w-7xl flex-1 gap-6 px-3 py-4 pb-28 sm:px-4 lg:grid-cols-[minmax(0,1fr)_400px] lg:pb-10">
-        <div className="animate-fade-in flex flex-col gap-6">
+      <div className="mx-auto grid w-full max-w-7xl flex-1 gap-6 px-3 py-4 pb-[calc(var(--practice-bottom-bar-height,80px)+1rem)] sm:px-4 lg:grid-cols-[minmax(0,1fr)_400px] lg:pb-10">
+        <div className="animate-fade-in flex min-w-0 flex-col gap-6">
           {PART_META.map((meta) => (
             <div key={meta.part}>
-              <div className="sticky top-[57px] z-30 -mx-3 border-b border-line bg-gradient-to-r from-paper-deep/95 via-paper/95 to-paper-deep/95 px-3 py-2 backdrop-blur sm:-mx-4 sm:px-4 lg:-mx-1 lg:px-1">
+              <div data-practice-part-header className="sticky top-[var(--practice-toolbar-height,57px)] z-30 -mx-3 border-b border-line bg-gradient-to-r from-paper-deep/95 via-paper/95 to-paper-deep/95 px-3 py-2 backdrop-blur sm:-mx-4 sm:px-4 lg:-mx-1 lg:px-1">
                 <h2 className="text-sm font-extrabold uppercase tracking-wide text-brand-dark">
                   {meta.nameVi} · {meta.range}
                 </h2>
@@ -355,23 +392,23 @@ export default function PracticePage() {
 
         {/* Sidebar desktop */}
         <aside className="hidden lg:block">
-          <div className="sticky top-[73px] rounded-2xl border border-line bg-white p-4 shadow-card">
+          <div className="sticky top-[calc(var(--practice-toolbar-height,57px)+1rem)] flex max-h-[calc(100vh-var(--practice-toolbar-height,57px)-2rem-env(safe-area-inset-bottom))] flex-col rounded-2xl border border-line bg-white p-4 shadow-card supports-[height:100dvh]:max-h-[calc(100dvh-var(--practice-toolbar-height,57px)-2rem-env(safe-area-inset-bottom))]">
             <QuestionPanel answers={answers} flags={flags} currentId={currentId} onJump={jumpTo} />
           </div>
         </aside>
       </div>
 
       {/* Bottom bar mobile */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line/70 bg-paper/90 backdrop-blur lg:hidden">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2">
-          <span className="text-xs font-semibold text-ink">
+      <div data-practice-bottom-bar className="fixed inset-x-0 bottom-0 z-40 border-t border-line/70 bg-paper/90 backdrop-blur lg:hidden">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pt-2">
+          <span className="min-w-0 text-xs font-semibold text-ink">
             Đã làm <span className="font-tabular">{answeredCount}/{TOTAL_QUESTIONS}</span>
             {unanswered > 0 && <span className="text-bad"> · {unanswered} chưa làm</span>}
           </span>
           <button
             type="button"
             onClick={() => setSheetOpen(true)}
-            className="inline-flex items-center gap-2 rounded-lg border border-brand bg-white px-4 py-2.5 text-sm font-bold text-brand-dark min-h-[44px]"
+            className="inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-lg border border-brand bg-white px-3 py-2.5 text-sm font-bold text-brand-dark"
             aria-expanded={sheetOpen}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -384,21 +421,23 @@ export default function PracticePage() {
       </div>
 
       {/* Bottom sheet mobile */}
-      {sheetOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/50" role="dialog" aria-modal="true" aria-label="Bảng điều hướng câu hỏi">
-          <div className="navigator-scroll animate-fade-up mx-auto max-h-[85vh] w-full max-w-md overflow-y-auto rounded-t-3xl bg-white p-4 pb-8 shadow-sheet">
-            <QuestionPanel
-              answers={answers}
-              flags={flags}
-              currentId={currentId}
-              onJump={jumpTo}
-              showHandle
-              onClose={() => setSheetOpen(false)}
-              gridClassName=""
-            />
-          </div>
+      <Modal
+        open={sheetOpen}
+        onClose={() => setSheetOpen(false)}
+        label="Bảng điều hướng 100 câu hỏi Listening"
+        className="items-center justify-end pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[max(1rem,env(safe-area-inset-top))]"
+      >
+        <div className="animate-fade-up flex max-h-full min-h-0 w-full max-w-md flex-col overflow-hidden rounded-t-3xl bg-white p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-sheet">
+          <QuestionPanel
+            answers={answers}
+            flags={flags}
+            currentId={currentId}
+            onJump={jumpTo}
+            showHandle
+            onClose={() => setSheetOpen(false)}
+          />
         </div>
-      )}
+      </Modal>
 
       {/* Modal xác nhận nộp bài */}
       <ConfirmDialog

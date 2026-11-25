@@ -97,7 +97,7 @@ export default function ResultsClient() {
             {isCorrect ? "Đúng" : "Sai"}
           </span>
           <div className="ml-auto">
-            <SpeakButton text={speechTextForQuestion(q, group)} rate={rate} label="Nghe" className="!min-h-[36px] !py-1 text-xs" />
+            <SpeakButton text={speechTextForQuestion(q, group)} rate={rate} label="Nghe" className="!py-1 text-xs" />
           </div>
         </div>
 
@@ -118,8 +118,8 @@ export default function ResultsClient() {
             else if (isChosen) cls = "border-bad bg-bad-soft text-bad font-semibold";
             return (
               <li key={opt.key} className={`flex items-start gap-2 rounded-lg border px-3 py-1.5 ${cls}`}>
-                <span className="font-bold">{opt.key}.</span>
-                <span>{opt.text}</span>
+                <span className="shrink-0 font-bold">{opt.key}.</span>
+                <span className="min-w-0 flex-1 break-words">{opt.text}</span>
                 {isAnswer && <span className="ml-auto shrink-0 text-[11px] font-bold uppercase">Đáp án</span>}
                 {!isAnswer && isChosen && <span className="ml-auto shrink-0 text-[11px] font-bold uppercase">Bạn chọn</span>}
               </li>
@@ -207,16 +207,16 @@ export default function ResultsClient() {
               </h2>
               <div className="flex flex-wrap items-center gap-2">
                 <div className="flex items-center rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold" role="group" aria-label="Lọc câu">
-                  <button type="button" onClick={() => setFilter("wrong")} aria-pressed={filter === "wrong"} className={`rounded-md px-3 py-2 min-h-[40px] transition-all ${filter === "wrong" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
+                  <button type="button" onClick={() => setFilter("wrong")} aria-pressed={filter === "wrong"} className={`rounded-md px-3 py-2 min-h-[44px] transition-all ${filter === "wrong" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
                     Chỉ câu sai
                   </button>
-                  <button type="button" onClick={() => setFilter("all")} aria-pressed={filter === "all"} className={`rounded-md px-3 py-2 min-h-[40px] transition-all ${filter === "all" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
+                  <button type="button" onClick={() => setFilter("all")} aria-pressed={filter === "all"} className={`rounded-md px-3 py-2 min-h-[44px] transition-all ${filter === "all" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
                     Tất cả
                   </button>
                 </div>
                 <div className="flex items-center rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold" aria-label="Tốc độ đọc">
                   {([0.8, 1] as SpeechRate[]).map((r) => (
-                    <button key={r} type="button" onClick={() => setRate(r)} aria-pressed={rate === r} className={`rounded-md px-2.5 py-2 min-h-[40px] transition-all ${rate === r ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft"}`}>
+                    <button key={r} type="button" onClick={() => setRate(r)} aria-pressed={rate === r} className={`rounded-md px-2.5 py-2 min-h-[44px] min-w-[44px] transition-all ${rate === r ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft"}`}>
                       {r === 0.8 ? "0.8x" : "1.0x"}
                     </button>
                   ))}

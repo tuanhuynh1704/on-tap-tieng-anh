@@ -182,7 +182,7 @@ export default function QuestionExplanationExplorer() {
   }
 
   return (
-    <section className="rounded-2xl border border-line bg-white p-5 shadow-card sm:p-7" aria-labelledby="question-explanations-title">
+    <section className="rounded-2xl border border-line bg-white p-4 shadow-card sm:p-7" aria-labelledby="question-explanations-title">
       <div className="max-w-3xl">
         <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand">200 CÂU · TRA CỨU THEO TỪNG CÂU</p>
         <h2 id="question-explanations-title" className="mt-2 font-display text-2xl font-bold text-ink sm:text-3xl">Giải thích chi tiết Listening &amp; Reading</h2>
@@ -190,23 +190,23 @@ export default function QuestionExplanationExplorer() {
       </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
-        <div className="flex rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold" role="group" aria-label="Chọn môn">
+        <div className="grid w-full grid-cols-2 rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold sm:w-auto" role="group" aria-label="Chọn môn">
           {(["listening", "reading"] as const).map((item) => (
-            <button key={item} type="button" onClick={() => changeModule(item)} aria-pressed={module === item} className={`min-h-[40px] rounded-md px-4 ${module === item ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft"}`}>
+            <button key={item} type="button" onClick={() => changeModule(item)} aria-pressed={module === item} className={`min-h-[44px] min-w-0 rounded-md px-2 sm:px-4 ${module === item ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft"}`}>
               {item === "listening" ? "Listening · 100 câu" : "Reading · 100 câu"}
             </button>
           ))}
         </div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Lọc Part">
           {partOptions.map((item) => (
-            <button key={item.part} type="button" onClick={() => changePart(item.part)} aria-pressed={part === item.part} className={`min-h-[40px] rounded-lg border px-3 text-xs font-bold ${part === item.part ? "border-brand bg-brand text-white" : "border-line bg-white text-ink-soft hover:border-brand"}`}>
+            <button key={item.part} type="button" onClick={() => changePart(item.part)} aria-pressed={part === item.part} className={`min-h-[44px] rounded-lg border px-3 text-xs font-bold ${part === item.part ? "border-brand bg-brand text-white" : "border-line bg-white text-ink-soft hover:border-brand"}`}>
               Part {item.part} · {item.count} câu
             </button>
           ))}
         </div>
       </div>
 
-      <div className="mt-4 grid grid-cols-5 gap-2 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12" aria-label={`Danh sách câu hỏi ${module}`}>
+      <div className="mt-4 grid grid-cols-4 gap-2 min-[360px]:grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12" aria-label={`Danh sách câu hỏi ${module}`}>
         {questions.map((question) => (
           <button key={question.id} type="button" onClick={() => setSelectedId(question.id)} aria-pressed={selectedId === question.id} aria-label={`Xem giải thích câu ${question.id}`} className={`min-h-[44px] rounded-lg border text-sm font-bold transition-colors ${selectedId === question.id ? "border-brand bg-brand text-white" : "border-line bg-paper text-ink hover:border-brand hover:bg-brand-soft"}`}>
             {question.id}
@@ -216,27 +216,27 @@ export default function QuestionExplanationExplorer() {
 
       {selectedQuestion ? (
         <div className="mt-5 rounded-2xl border border-brand/25 bg-white p-4 sm:p-6" aria-live="polite">
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b border-line pb-3">
-            <button type="button" onClick={() => moveQuestion(-1)} disabled={selectedId === 1} aria-label="Câu trước" className="inline-flex min-h-[40px] items-center gap-1 rounded-lg border border-line px-3 text-sm font-bold text-ink-soft hover:border-brand hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-40">
+          <div className="mb-4 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 border-b border-line pb-3">
+            <button type="button" onClick={() => moveQuestion(-1)} disabled={selectedId === 1} aria-label="Câu trước" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1 rounded-lg border border-line px-3 text-sm font-bold text-ink-soft hover:border-brand hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-40">
               <span aria-hidden="true">←</span><span className="hidden sm:inline">Trước</span>
             </button>
-            <div className="flex flex-1 flex-wrap items-center justify-center gap-2 text-center">
+            <div className="flex min-w-0 flex-wrap items-center justify-center gap-2 text-center">
               <h3 className="font-display text-lg font-bold text-ink">{module === "listening" ? "Listening" : "Reading"} · Part {selectedQuestion.part} · Câu {selectedQuestion.id}</h3>
               <span className="rounded-full bg-ok-soft px-3 py-1 text-xs font-bold text-ok">Đáp án {selectedQuestion.answer}</span>
             </div>
-            <button type="button" onClick={() => moveQuestion(1)} disabled={selectedId === 100} aria-label="Câu kế tiếp" className="inline-flex min-h-[40px] items-center gap-1 rounded-lg border border-brand bg-brand px-3 text-sm font-bold text-white hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-40">
+            <button type="button" onClick={() => moveQuestion(1)} disabled={selectedId === 100} aria-label="Câu kế tiếp" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1 rounded-lg border border-brand bg-brand px-3 text-sm font-bold text-white hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-40">
               <span className="hidden sm:inline">Tiếp</span><span aria-hidden="true">→</span>
             </button>
           </div>
           {module === "listening"
             ? <ListeningExplanation question={selectedQuestion as ExamQuestion} />
             : <ReadingExplanation question={selectedQuestion as ReadingQuestion} />}
-          <div className="mt-5 flex items-center justify-between gap-3 border-t border-line pt-4">
-            <button type="button" onClick={() => moveQuestion(-1)} disabled={selectedId === 1} className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-line bg-white px-4 text-sm font-bold text-ink hover:border-brand hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-40">
+          <div className="mt-5 grid grid-cols-2 items-center gap-3 border-t border-line pt-4 sm:flex sm:justify-between">
+            <button type="button" onClick={() => moveQuestion(-1)} disabled={selectedId === 1} className="inline-flex min-h-[44px] min-w-0 items-center justify-center gap-1 rounded-lg border border-line bg-white px-2 text-sm font-bold text-ink hover:border-brand hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-40 sm:gap-2 sm:px-4">
               <span aria-hidden="true">←</span> Câu trước
             </button>
-            <span className="text-xs font-semibold text-ink-soft">Câu {selectedId}/100</span>
-            <button type="button" onClick={() => moveQuestion(1)} disabled={selectedId === 100} className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-brand bg-brand px-4 text-sm font-bold text-white hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-40">
+            <span className="col-span-2 row-start-1 text-center text-xs font-semibold text-ink-soft">Câu {selectedId}/100</span>
+            <button type="button" onClick={() => moveQuestion(1)} disabled={selectedId === 100} className="inline-flex min-h-[44px] min-w-0 items-center justify-center gap-1 rounded-lg border border-brand bg-brand px-2 text-sm font-bold text-white hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-40 sm:gap-2 sm:px-4">
               Câu kế tiếp <span aria-hidden="true">→</span>
             </button>
           </div>

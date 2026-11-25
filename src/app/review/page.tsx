@@ -27,7 +27,7 @@ import {
 import { speechTextForGroup, speechTextForQuestion, type SpeechRate } from "@/lib/tts";
 
 const GOLD_LISTEN_CLASS =
-  "!min-h-[36px] !border !border-accent/60 !bg-white !py-1 !text-xs !font-bold !text-accent-dark hover:!bg-accent-soft";
+  "!border !border-accent/60 !bg-white !py-1 !text-xs !font-bold !text-accent-dark hover:!bg-accent-soft";
 
 function questionHaystack(q: ExamQuestion): string {
   const group = getGroupForQuestion(q);
@@ -104,7 +104,7 @@ export default function ReviewPage() {
       <div
         key={q.id}
         id={`rq-${q.id}`}
-        className="scroll-mt-32 rounded-xl border border-line bg-white p-3 shadow-card transition-shadow duration-200 hover:shadow-lift"
+        className="scroll-mt-[calc(var(--site-header-height)+8.5rem)] rounded-xl border border-line bg-white p-3 shadow-card transition-shadow duration-200 hover:shadow-lift sm:scroll-mt-[calc(var(--site-header-height)+4.5rem)]"
       >
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-ink text-xs font-extrabold text-white font-tabular">
@@ -124,7 +124,7 @@ export default function ReviewPage() {
               type="button"
               onClick={() => toggleMastered(q.id)}
               aria-pressed={isMastered}
-              className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-colors ${
+              className={`inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-colors ${
                 isMastered
                   ? "border-ok bg-ok-soft text-ok"
                   : "border-line bg-white text-ink-soft hover:border-ok hover:text-ok"
@@ -172,8 +172,8 @@ export default function ReviewPage() {
                   isAnswer ? "border-ok bg-ok-soft font-semibold text-ok" : "border-line bg-white text-ink-soft"
                 }`}
               >
-                <span className="font-bold">{opt.key}.</span>
-                <span>{opt.text}</span>
+                <span className="shrink-0 font-bold">{opt.key}.</span>
+                <span className="min-w-0 break-words">{opt.text}</span>
               </li>
             );
           })}
@@ -213,6 +213,7 @@ export default function ReviewPage() {
           <SpeakButton text={speechTextForGroup(group)} rate={rate} label="Nghe đoạn" className={GOLD_LISTEN_CLASS} />
         </div>
         <div
+          inert={!isOpen}
           className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${
             isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
           }`}
@@ -261,6 +262,7 @@ export default function ReviewPage() {
           </span>
         </button>
         <div
+          inert={!isOpen}
           className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${
             isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
           }`}
@@ -288,7 +290,7 @@ export default function ReviewPage() {
             <div className="ml-auto flex flex-wrap items-center gap-2">
               <div className="flex items-center rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold" aria-label="Tốc độ đọc">
                 {([0.8, 1] as SpeechRate[]).map((r) => (
-                  <button key={r} type="button" onClick={() => setRate(r)} aria-pressed={rate === r} className={`rounded-md px-2.5 py-2 min-h-[40px] transition-all ${rate === r ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft"}`}>
+                  <button key={r} type="button" onClick={() => setRate(r)} aria-pressed={rate === r} className={`rounded-md px-2.5 py-2 min-h-[44px] min-w-[44px] transition-all ${rate === r ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft"}`}>
                     {r === 0.8 ? "0.8x" : "1.0x"}
                   </button>
                 ))}
@@ -296,7 +298,7 @@ export default function ReviewPage() {
               <button
                 type="button"
                 onClick={() => setDeleteOpen(true)}
-                className="rounded-lg border border-bad/50 bg-white px-3 py-2 text-xs font-bold text-bad hover:bg-bad-soft min-h-[40px]"
+                className="rounded-lg border border-bad/50 bg-white px-3 py-2 text-xs font-bold text-bad hover:bg-bad-soft min-h-[44px]"
               >
                 Xoá lịch sử &amp; trạng thái đã nắm
               </button>
@@ -308,22 +310,30 @@ export default function ReviewPage() {
             <strong className="font-tabular text-ink">{mounted ? masteredCount : 0}/{TOTAL_QUESTIONS}</strong> câu.
           </p>
 
-          <Link href="/listening/answer-check" className="mt-4 inline-flex min-h-[44px] items-center rounded-xl border border-brand bg-brand-soft px-4 py-2.5 text-sm font-bold text-brand-dark hover:bg-brand/20">
-            Học thuộc đáp án câu 1–31 · Chấm điểm riêng
-          </Link>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link href="/listening/answer-check" className="inline-flex min-h-[44px] items-center rounded-xl border border-brand bg-brand-soft px-4 py-2.5 text-sm font-bold text-brand-dark hover:bg-brand/20">
+              Học thuộc đáp án Listening Part 1-2
+            </Link>
+            <Link href="/listening/answer-check/part-3" className="inline-flex min-h-[44px] items-center rounded-xl border border-brand bg-brand-soft px-4 py-2.5 text-sm font-bold text-brand-dark hover:bg-brand/20">
+              Học thuộc đáp án Listening Part 3
+            </Link>
+            <Link href="/listening/answer-check/part-4" className="inline-flex min-h-[44px] items-center rounded-xl border border-brand bg-brand-soft px-4 py-2.5 text-sm font-bold text-brand-dark hover:bg-brand/20">
+              Học thuộc đáp án Listening Part 4
+            </Link>
+          </div>
 
           {/* Thanh công cụ: filter + search */}
-          <div className="sticky top-14 z-30 -mx-3 mt-4 border-b border-line/70 bg-paper/90 px-3 py-2 backdrop-blur sm:-mx-6 sm:px-6">
+          <div className="sticky top-[var(--site-header-height)] z-30 -mx-3 mt-4 border-b border-line/70 bg-paper/90 px-3 py-2 backdrop-blur sm:-mx-6 sm:px-6">
             <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-2">
               <div className="flex items-center rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold" role="group" aria-label="Lọc câu">
-                <button type="button" onClick={() => setFilter("all")} aria-pressed={filter === "all"} className={`rounded-md px-3 py-2 min-h-[40px] transition-all ${filter === "all" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
+                <button type="button" onClick={() => setFilter("all")} aria-pressed={filter === "all"} className={`rounded-md px-3 py-2 min-h-[44px] transition-all ${filter === "all" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
                   Tất cả
                 </button>
-                <button type="button" onClick={() => setFilter("unmastered")} aria-pressed={filter === "unmastered"} className={`rounded-md px-3 py-2 min-h-[40px] transition-all ${filter === "unmastered" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
+                <button type="button" onClick={() => setFilter("unmastered")} aria-pressed={filter === "unmastered"} className={`rounded-md px-3 py-2 min-h-[44px] transition-all ${filter === "unmastered" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
                   Chưa nắm
                 </button>
               </div>
-              <label className="relative min-w-0 flex-1">
+              <label className="relative w-full min-w-0 flex-none sm:w-auto sm:flex-1">
                 <span className="sr-only">Tìm trong câu hỏi, đáp án, transcript</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-soft">
                   <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
@@ -334,7 +344,7 @@ export default function ReviewPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Tìm theo nội dung, số câu, đáp án…"
-                  className="w-full rounded-lg border border-line bg-white py-2.5 pl-9 pr-3 text-sm text-ink placeholder:text-ink-soft min-h-[44px]"
+                  className="w-full rounded-lg border border-line bg-white py-2.5 pl-9 pr-3 text-base text-ink placeholder:text-ink-soft min-h-[44px] sm:text-sm"
                 />
               </label>
             </div>
@@ -365,7 +375,7 @@ export default function ReviewPage() {
                       return (
                         <tr key={id} className="border-t border-line">
                           <td className="py-1.5 pr-2">
-                            <a href={`#rq-${id}`} className="font-extrabold text-brand-dark underline decoration-dotted underline-offset-2 font-tabular">
+                            <a href={`#rq-${id}`} className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-extrabold text-brand-dark underline decoration-dotted underline-offset-2 font-tabular">
                               {id}
                             </a>
                           </td>

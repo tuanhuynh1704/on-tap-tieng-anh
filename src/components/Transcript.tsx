@@ -6,14 +6,14 @@ const SPEAKER_PREFIX = /^(M-[A-Za-z]+|W-[A-Za-z]+):\s*/;
 export default function Transcript({ transcript }: { transcript: string }) {
   const lines = transcript.split("\n").map((l) => l.trim()).filter(Boolean);
   return (
-    <div className="rounded-xl border border-line bg-white/70 p-3 text-sm leading-6 text-ink">
+    <div className="min-w-0 rounded-xl border border-line bg-white/70 p-3 text-sm leading-6 text-ink">
       {lines.map((line, i) => {
         const m = line.match(SPEAKER_PREFIX);
         const speaker = m?.[1] ?? null;
         const body = m ? line.slice(m[0].length) : line;
         const parts = body.split(CUE_SPLIT);
         return (
-          <p key={i} className="py-1 flex gap-2">
+          <p key={i} className="min-w-0 py-1 flex gap-2">
             {speaker && (
               <span
                 className={`shrink-0 inline-flex items-start justify-center rounded px-1.5 text-[11px] font-bold leading-5 h-5 mt-0.5 ${
@@ -23,7 +23,7 @@ export default function Transcript({ transcript }: { transcript: string }) {
                 {speaker}
               </span>
             )}
-            <span>
+            <span className="min-w-0 break-words">
               {parts.map((part, j) =>
                 CUE_TEST.test(part) ? (
                   <mark key={j} className="cue">

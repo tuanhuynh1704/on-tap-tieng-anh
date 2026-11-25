@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Modal from "@/components/Modal";
 
 export default function ConfirmDialog({
   open,
@@ -25,33 +26,26 @@ export default function ConfirmDialog({
 
   useEffect(() => {
     if (!open) return;
-    confirmRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onCancel();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, onCancel]);
+    confirmRef.current?.focus({ preventScroll: true });
+  }, [open]);
 
   if (!open) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="confirm-dialog-title"
-      onClick={onCancel}
+    <Modal
+      open={open}
+      onClose={onCancel}
+      label={title}
+      className="items-center justify-end pt-[calc(1rem+env(safe-area-inset-top))] pr-[max(1rem,env(safe-area-inset-right))] pb-[calc(1rem+env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] sm:justify-center"
     >
       <div
-        className="w-full max-w-md rounded-2xl bg-paper p-5 shadow-xl"
-        onClick={(e) => e.stopPropagation()}
+        className="max-h-full w-full max-w-md overflow-y-auto overscroll-contain rounded-2xl bg-paper p-5 shadow-xl"
       >
         <h2 id="confirm-dialog-title" className="text-lg font-extrabold text-ink">
           {title}
         </h2>
         <div className="mt-2 text-sm leading-6 text-ink-soft">{message}</div>
-        <div className="mt-4 flex justify-end gap-2">
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:justify-end">
           <button
             type="button"
             onClick={onCancel}
@@ -71,6 +65,6 @@ export default function ConfirmDialog({
           </button>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }

@@ -45,11 +45,11 @@ export default function SpeakButton({
           window.setTimeout(() => setSpeaking(false), est);
         }
       }}
-      className={`inline-flex items-center gap-1.5 rounded-full border border-brand bg-brand-soft px-3 py-1.5 text-sm font-semibold text-brand-dark hover:bg-brand hover:text-white transition-colors min-h-[40px] ${className}`}
+      className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-brand bg-brand-soft px-3 py-1.5 text-sm font-semibold text-brand-dark hover:bg-brand hover:text-white transition-colors min-h-[44px] ${className}`}
       aria-pressed={speaking}
       aria-label={speaking ? "Dừng nghe" : label}
     >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0">
         <path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" />
         <path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
       </svg>

@@ -15,7 +15,7 @@ export default function QuestionPanel({
   onJump,
   showHandle = false,
   onClose,
-  gridClassName = "navigator-scroll max-h-[52vh] overflow-y-auto pr-1",
+  gridClassName = "navigator-scroll min-h-16 flex-1 overflow-y-auto overscroll-contain p-1.5 [@media(max-height:480px)]:flex-none [@media(max-height:480px)]:overflow-visible",
   questions,
   parts,
   total = TOTAL_QUESTIONS,
@@ -41,10 +41,10 @@ export default function QuestionPanel({
   const firstUnansweredId = navQuestions.find((q) => !answers[q.id])?.id ?? null;
 
   return (
-    <div className="flex flex-col">
+    <div className="navigator-scroll flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto overscroll-contain">
       {/* Tay cầm + nút đóng (chỉ dùng cho bottom sheet) */}
       {showHandle && (
-        <div className="relative mb-3 flex h-11 items-center justify-center">
+        <div className="relative mb-3 flex h-11 shrink-0 items-center justify-center">
           <span className="mx-auto h-1.5 w-12 rounded-full bg-line" aria-hidden="true" />
           {onClose && (
             <button
@@ -62,7 +62,7 @@ export default function QuestionPanel({
       )}
 
       {/* Hàng 1 — tiêu đề + x/100 lớn */}
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex shrink-0 flex-wrap items-center justify-between gap-3">
         <h2 className="text-sm font-extrabold uppercase tracking-wide text-ink">
           Bảng câu hỏi
         </h2>
@@ -73,7 +73,7 @@ export default function QuestionPanel({
 
       {/* Hàng 2 — progress bar mảnh + % */}
       <div
-        className="mt-3"
+        className="mt-3 shrink-0"
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={total}
@@ -91,7 +91,7 @@ export default function QuestionPanel({
         </div>
       </div>
 
-      {/* Lưới điều hướng — vùng cuộn riêng trên desktop */}
+      {/* Lưới cuộn riêng; viewport thấp cuộn toàn panel để giữ đủ nội dung. */}
       <div className={`mt-3 ${gridClassName}`}>
         <QuestionNavigator
           answers={answers}
@@ -105,7 +105,7 @@ export default function QuestionPanel({
       </div>
 
       {/* Legend dạng swatch ô + nút "Đến câu chưa làm" */}
-      <div className="mt-3 border-t border-line/70 pt-3">
+      <div className="mt-3 shrink-0 border-t border-line/70 pt-3">
         <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] font-medium text-ink-soft">
           <li className="inline-flex items-center gap-1.5">
             <span className="h-3.5 w-3.5 shrink-0 rounded border border-line bg-white" aria-hidden="true" />
@@ -124,7 +124,7 @@ export default function QuestionPanel({
           type="button"
           onClick={() => firstUnansweredId !== null && onJump(firstUnansweredId)}
           disabled={firstUnansweredId === null}
-          className="mt-3 flex min-h-[40px] w-full items-center justify-center gap-1.5 rounded-lg border border-accent bg-accent-soft px-3 py-2 text-xs font-extrabold text-accent-dark transition-colors hover:border-accent-dark hover:bg-accent-soft/80 disabled:cursor-not-allowed disabled:opacity-50"
+          className="mt-3 flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-lg border border-accent bg-accent-soft px-3 py-2 text-xs font-extrabold text-accent-dark transition-colors hover:border-accent-dark hover:bg-accent-soft/80 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 5v14M12 19l-5-5M12 19l5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

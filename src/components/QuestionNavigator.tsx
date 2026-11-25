@@ -95,17 +95,14 @@ export default function QuestionNavigator({
               </span>
             </div>
 
-            {/* Mọi Part dùng chung grid 10 cột — ô cùng kích thước, không stretch */}
-            <div className="grid grid-cols-10 gap-1">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(44px,1fr))] gap-2.5">
               {partQuestions.map((q) => {
                 const answered = Boolean(answers[q.id]);
                 const flagged = flagSet.has(q.id);
                 const isCurrent = currentId === q.id;
 
-                // base cố định: border 1px + aspect-square + w-full ở MỌI trạng thái
-                // → computed width/height không đổi khi đổi trạng thái.
                 const base =
-                  "relative flex aspect-square w-full items-center justify-center rounded-md border text-xs font-bold font-tabular transition-[transform,box-shadow,border-color,background-color] focus-visible:z-20";
+                  "relative flex aspect-square min-h-[44px] min-w-[44px] w-full items-center justify-center rounded-md border text-xs font-bold font-tabular transition-[transform,box-shadow,border-color,background-color] focus-visible:z-20";
 
                 let tone: string;
                 if (answered && flagged) {

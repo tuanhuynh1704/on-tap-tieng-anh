@@ -83,7 +83,7 @@ export default function HomePage() {
 
       <main className="flex flex-1 flex-col">
         {/* Hero */}
-        <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-brand-soft/40 to-paper px-4 py-12 sm:py-16">
+        <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-brand-soft/40 to-paper px-4 py-8 sm:py-16">
           {/* Nền trang trí: chấm mờ + blob teal/gold */}
           <div className="bg-dots pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
           <div className="pointer-events-none absolute -left-24 -top-32 h-80 w-80 rounded-full bg-brand/20 blur-3xl" aria-hidden="true" />
@@ -91,24 +91,24 @@ export default function HomePage() {
 
           <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
             {/* Cột trái */}
-            <div className="animate-fade-up">
+            <div className="animate-fade-up min-w-0">
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-brand">
                 TOEIC · LISTENING &amp; READING
               </p>
-              <h1 className="mt-4 font-display text-5xl font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl">
+              <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink min-[400px]:text-5xl sm:text-6xl">
                 TOEIC REVISION<span className="text-brand">.</span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-7 text-ink-soft sm:text-lg">
                 Luyện trọn bộ 200 câu Listening + Reading — làm lại nhiều lần, theo dõi tiến bộ.
               </p>
 
-              <div className="mt-7 flex flex-wrap items-center gap-3">
+              <div className="mt-7 grid gap-3 [&>a]:justify-center [&>a]:px-4 [&>a]:text-center sm:flex sm:flex-wrap sm:items-center sm:[&>a]:px-6">
                 <Link
                   href="/practice"
                   onClick={() => clearDraft()}
                   className="inline-flex min-h-[52px] items-center rounded-xl bg-[#d97706] px-7 py-4 text-base font-extrabold text-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#b45309] hover:shadow-lift active:scale-[0.98]"
                 >
-                  Làm Listening <span aria-hidden="true">→</span>
+                  Làm Listening <span className="ml-2" aria-hidden="true">→</span>
                 </Link>
                 <Link
                   href="/reading"
@@ -132,7 +132,19 @@ export default function HomePage() {
                   href="/listening/answer-check"
                   className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-brand bg-brand-soft px-5 py-3 text-sm font-extrabold text-brand-dark transition-all hover:bg-brand/20"
                 >
-                  Học thuộc đáp án Listening 1–31
+                  Học thuộc đáp án Listening Part 1-2
+                </Link>
+                <Link
+                  href="/listening/answer-check/part-3"
+                  className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-brand bg-brand-soft px-5 py-3 text-sm font-extrabold text-brand-dark transition-all hover:bg-brand/20"
+                >
+                  Học thuộc đáp án Listening Part 3
+                </Link>
+                <Link
+                  href="/listening/answer-check/part-4"
+                  className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-brand bg-brand-soft px-5 py-3 text-sm font-extrabold text-brand-dark transition-all hover:bg-brand/20"
+                >
+                  Học thuộc đáp án Listening Part 4
                 </Link>
                 <Link
                   href="/explanations"
@@ -157,8 +169,8 @@ export default function HomePage() {
 
             {/* Cột phải — bìa đề thi */}
             <div className="animate-fade-up flex justify-center lg:justify-end" style={{ animationDelay: "120ms" }}>
-              <div className="w-full max-w-sm rounded-2xl border border-line bg-gradient-to-br from-paper-deep to-surface p-6 shadow-card">
-                <div className="flex min-h-[340px] flex-col rounded-xl border border-line/70 bg-white/60 px-6 py-7 text-center">
+              <div className="w-full max-w-sm rounded-2xl border border-line bg-gradient-to-br from-paper-deep to-surface p-4 shadow-card sm:p-6">
+                <div className="flex min-h-[260px] flex-col rounded-xl border border-line/70 bg-white/60 px-4 py-5 text-center sm:min-h-[340px] sm:px-6 sm:py-7">
                   <p className="font-display text-[11px] font-bold uppercase tracking-[0.3em] text-accent-dark">
                     OFFICIAL PRACTICE EXAM
                   </p>
@@ -189,7 +201,7 @@ export default function HomePage() {
         </section>
 
         {/* Chọn bài luyện — 2 card lớn */}
-        <section className="animate-fade-up mx-auto max-w-6xl px-4 py-10">
+        <section className="animate-fade-up mx-auto w-full max-w-6xl px-4 py-10">
           <h2 className="py-2 text-sm font-extrabold uppercase tracking-[0.24em] text-brand">Chọn bài luyện</h2>
           <div className="grid gap-6 lg:grid-cols-2">
             {/* Listening */}
@@ -265,7 +277,7 @@ export default function HomePage() {
                     type="button"
                     onClick={() => setModule(m)}
                     aria-pressed={module === m}
-                    className={`min-h-[36px] rounded-md px-3 py-1.5 transition-all ${
+                    className={`min-h-[44px] rounded-md px-3 py-1.5 transition-all ${
                       module === m ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"
                     }`}
                   >
@@ -277,7 +289,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setDeleteOpen(true)}
-                  className="text-xs font-semibold text-bad underline decoration-dotted underline-offset-2 hover:text-red-800 min-h-[36px]"
+                  className="text-xs font-semibold text-bad underline decoration-dotted underline-offset-2 hover:text-red-800 min-h-[44px]"
                 >
                   Xoá lịch sử {module === "listening" ? "Listening" : "Reading"}
                 </button>
@@ -380,7 +392,7 @@ export default function HomePage() {
 
       </main>
 
-      <footer className="border-t border-line bg-paper px-4 py-5">
+      <footer className="border-t border-line bg-paper px-4 pt-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-2 text-center text-[11px] text-ink-soft">
           <span className="grid h-6 w-6 place-items-center rounded bg-brand font-display text-[10px] font-bold text-white" aria-hidden="true">
             TR

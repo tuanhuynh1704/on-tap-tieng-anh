@@ -37,7 +37,8 @@ function renderText(text: string, onBlank?: (n: number) => void, chosen?: (n: nu
               type="button"
               onClick={() => onBlank(num)}
               title={`Câu ${num} — chỗ trống`}
-              className="mx-0.5 inline-flex min-h-[24px] items-center rounded-md border border-brand/40 bg-brand-soft px-1.5 py-0.5 text-[12px] font-bold text-brand-dark transition-shadow hover:shadow-card"
+              aria-label={`Câu ${num}, chỗ trống${val ? `, đã chọn ${val}` : ""}`}
+              className="mx-0.5 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-brand/40 bg-brand-soft px-1.5 py-0.5 text-[12px] font-bold text-brand-dark transition-shadow hover:shadow-card"
             >
               {val ? `${num} · ${val}` : num}
             </button>
@@ -47,8 +48,8 @@ function renderText(text: string, onBlank?: (n: number) => void, chosen?: (n: nu
           <span
             key={i}
             className="mx-0.5 inline-flex min-h-[22px] items-center rounded border border-line bg-paper-deep px-1.5 py-0.5 text-[11px] font-bold text-ink"
-            aria-hidden="true"
           >
+            <span className="sr-only">Vị trí </span>
             [{num}]
           </span>
         );
@@ -113,7 +114,7 @@ function BlockRenderer({ block, onBlank, chosen }: { block: ReadingBlock; onBlan
       );
     case "table":
       return (
-        <div className="mt-2.5 overflow-x-auto rounded-xl border border-line">
+        <div className="mt-2.5 min-w-0 max-w-full overflow-x-auto rounded-xl border border-line [overflow-wrap:normal]">
           <table className="w-full border-collapse text-[15px]">
             <thead>
               <tr className="border-b border-line text-left text-[11px] uppercase tracking-wide text-ink-soft">
@@ -175,7 +176,7 @@ function BlockRenderer({ block, onBlank, chosen }: { block: ReadingBlock; onBlan
 
 export default function ReadingDocumentCard({ doc, onBlank, chosen }: ReadingDocumentCardProps) {
   return (
-    <div className="rounded-2xl border border-line bg-white px-4 py-3 shadow-card">
+    <div className="min-w-0 rounded-2xl border border-line bg-white px-4 py-3 shadow-card [overflow-wrap:anywhere]">
       {doc.title && <h4 className="font-display text-base font-bold text-ink">{doc.title}</h4>}
       {doc.subtitle && <p className="mt-0.5 text-xs font-semibold text-ink-soft">{doc.subtitle}</p>}
       {(doc.meta ?? []).map((line, i) => (

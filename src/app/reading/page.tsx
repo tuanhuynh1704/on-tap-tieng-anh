@@ -62,17 +62,17 @@ export default function ReadingHubPage() {
                 100 câu đề thi Part 5–7 trong 75 phút — Điền từ, hoàn thành đoạn văn, đọc hiểu. Làm lại nhiều lần, theo dõi tiến bộ.
               </p>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row">
               <Link
                 href="/reading/practice"
                 onClick={() => clearDraft()}
-                className="inline-flex min-h-[52px] items-center rounded-xl bg-[#d97706] px-7 py-4 text-base font-extrabold text-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#b45309] hover:shadow-lift active:scale-[0.98]"
+                className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-[#d97706] px-7 py-4 text-base font-extrabold text-white shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#b45309] hover:shadow-lift active:scale-[0.98] sm:w-auto"
               >
                 Bắt đầu làm bài <span aria-hidden="true">→</span>
               </Link>
               <Link
                 href="/reading/review"
-                className="inline-flex min-h-[52px] items-center rounded-xl border-2 border-brand bg-white px-7 py-4 text-base font-extrabold text-brand-dark transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-card active:scale-[0.98]"
+                className="inline-flex min-h-[52px] w-full items-center justify-center whitespace-nowrap rounded-xl border-2 border-brand bg-white px-7 py-4 text-base font-extrabold text-brand-dark transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-card active:scale-[0.98] sm:w-auto"
               >
                 Ôn tập &amp; đáp án
               </Link>
@@ -108,13 +108,13 @@ export default function ReadingHubPage() {
             aria-label="Thống kể Reading của bạn"
             style={{ animationDelay: "200ms" }}
           >
-            <div className="flex items-center justify-between gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="font-display text-lg font-bold text-ink">Thống kể Reading của bạn</h2>
               {mounted && hasHistory && (
                 <button
                   type="button"
                   onClick={() => setDeleteOpen(true)}
-                  className="text-xs font-semibold text-bad underline decoration-dotted underline-offset-2 hover:text-red-800 min-h-[36px]"
+                  className="text-xs font-semibold text-bad underline decoration-dotted underline-offset-2 hover:text-red-800 min-h-[44px]"
                 >
                   Xoá lịch sử Reading
                 </button>

@@ -173,10 +173,10 @@ export default function ReadingResultsClient() {
               </h2>
               <div className="flex flex-wrap items-center gap-2">
                 <div className="flex items-center rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold" role="group" aria-label="Lọc câu">
-                  <button type="button" onClick={() => setFilter("wrong")} aria-pressed={filter === "wrong"} className={`rounded-md px-3 py-2 min-h-[40px] transition-all ${filter === "wrong" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
+                  <button type="button" onClick={() => setFilter("wrong")} aria-pressed={filter === "wrong"} className={`rounded-md px-3 py-2 min-h-[44px] transition-all ${filter === "wrong" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
                     Chỉ câu sai
                   </button>
-                  <button type="button" onClick={() => setFilter("all")} aria-pressed={filter === "all"} className={`rounded-md px-3 py-2 min-h-[40px] transition-all ${filter === "all" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
+                  <button type="button" onClick={() => setFilter("all")} aria-pressed={filter === "all"} className={`rounded-md px-3 py-2 min-h-[44px] transition-all ${filter === "all" ? "bg-white text-brand-dark shadow-sm" : "text-ink-soft hover:text-brand-dark"}`}>
                     Tất cả
                   </button>
                 </div>
@@ -243,8 +243,8 @@ function ResultQuestionCard({ q, answers }: { q: ReadingQuestion; answers: Recor
           else if (isChosen) cls = "border-bad bg-bad-soft text-bad font-semibold";
           return (
             <li key={opt.key} className={`flex items-start gap-2 rounded-lg border px-3 py-1.5 ${cls}`}>
-              <span className="font-bold">{opt.key}.</span>
-              <span>{opt.text}</span>
+              <span className="shrink-0 font-bold">{opt.key}.</span>
+              <span className="min-w-0 flex-1 break-words">{opt.text}</span>
               {isAnswer && <span className="ml-auto shrink-0 text-[11px] font-bold uppercase">Đáp án</span>}
               {!isAnswer && isChosen && <span className="ml-auto shrink-0 text-[11px] font-bold uppercase">Bạn chọn</span>}
             </li>
@@ -283,7 +283,7 @@ function PassageGroupCard({ group, answers }: { group: PassageGroup; answers: Re
         </span>
         <span className="ml-auto shrink-0 text-xs font-semibold text-ink-soft">Xem đoạn văn</span>
       </button>
-      <div className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+      <div inert={!open} className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
         <div className="overflow-hidden">
           <div className="mt-2 flex flex-col gap-3 border-t border-line p-3">
             {group.passage.documents.map((doc) => (
