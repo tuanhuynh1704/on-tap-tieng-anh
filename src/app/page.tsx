@@ -147,6 +147,24 @@ export default function HomePage() {
                   Học thuộc đáp án Listening Part 4
                 </Link>
                 <Link
+                  href="/reading/answer-check"
+                  className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-brand bg-brand-soft px-5 py-3 text-sm font-extrabold text-brand-dark transition-all hover:bg-brand/20"
+                >
+                  Học thuộc đáp án Reading Part 5
+                </Link>
+                <Link
+                  href="/reading/answer-check/part-6"
+                  className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-brand bg-brand-soft px-5 py-3 text-sm font-extrabold text-brand-dark transition-all hover:bg-brand/20"
+                >
+                  Học thuộc đáp án Reading Part 6
+                </Link>
+                <Link
+                  href="/reading/answer-check/part-7"
+                  className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-brand bg-brand-soft px-5 py-3 text-sm font-extrabold text-brand-dark transition-all hover:bg-brand/20"
+                >
+                  Học thuộc đáp án Reading Part 7
+                </Link>
+                <Link
                   href="/explanations"
                   className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-accent bg-accent-soft px-5 py-3 text-sm font-extrabold text-accent-dark transition-all hover:-translate-y-0.5 hover:bg-accent/20"
                 >
@@ -255,6 +273,17 @@ export default function HomePage() {
                   className="inline-flex min-h-[48px] items-center rounded-xl border-2 border-brand bg-white px-6 py-3.5 text-sm font-bold text-brand-dark transition-all hover:-translate-y-0.5 hover:bg-brand-soft hover:shadow-card active:scale-[0.98]"
                 >
                   Ôn tập &amp; đáp án
+                </Link>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Link href="/reading/answer-check" className="inline-flex min-h-[44px] items-center rounded-lg border border-brand bg-brand-soft px-3 py-2 text-xs font-bold text-brand-dark hover:bg-brand/20">
+                  Học thuộc Part 5
+                </Link>
+                <Link href="/reading/answer-check/part-6" className="inline-flex min-h-[44px] items-center rounded-lg border border-brand bg-brand-soft px-3 py-2 text-xs font-bold text-brand-dark hover:bg-brand/20">
+                  Học thuộc Part 6
+                </Link>
+                <Link href="/reading/answer-check/part-7" className="inline-flex min-h-[44px] items-center rounded-lg border border-brand bg-brand-soft px-3 py-2 text-xs font-bold text-brand-dark hover:bg-brand/20">
+                  Học thuộc Part 7
                 </Link>
               </div>
             </div>

@@ -79,6 +79,28 @@ export default function ReadingHubPage() {
             </div>
           </div>
 
+          <section className="mt-8" aria-label="Học thuộc đáp án Reading theo Part">
+            <h2 className="font-display text-lg font-bold text-ink">Học thuộc đáp án theo Part</h2>
+            <p className="mt-1 text-sm text-ink-soft">Chọn một phần để luyện nhớ đáp án riêng, không ảnh hưởng lịch sử làm bài Reading.</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              <Link href="/reading/answer-check" className="rounded-2xl border border-brand/30 bg-brand-soft p-4 transition-colors hover:border-brand hover:bg-brand/20">
+                <span className="block text-xs font-bold uppercase tracking-wide text-brand-dark">Part 5</span>
+                <span className="mt-1 block font-display text-base font-bold text-ink">Điền từ/cụm từ</span>
+                <span className="mt-1 block text-xs text-ink-soft">30 câu · Câu 1–30</span>
+              </Link>
+              <Link href="/reading/answer-check/part-6" className="rounded-2xl border border-brand/30 bg-brand-soft p-4 transition-colors hover:border-brand hover:bg-brand/20">
+                <span className="block text-xs font-bold uppercase tracking-wide text-brand-dark">Part 6</span>
+                <span className="mt-1 block font-display text-base font-bold text-ink">Hoàn thành đoạn văn</span>
+                <span className="mt-1 block text-xs text-ink-soft">16 câu · Câu 31–46</span>
+              </Link>
+              <Link href="/reading/answer-check/part-7" className="rounded-2xl border border-brand/30 bg-brand-soft p-4 transition-colors hover:border-brand hover:bg-brand/20">
+                <span className="block text-xs font-bold uppercase tracking-wide text-brand-dark">Part 7</span>
+                <span className="mt-1 block font-display text-base font-bold text-ink">Đọc hiểu</span>
+                <span className="mt-1 block text-xs text-ink-soft">54 câu · Câu 47–100</span>
+              </Link>
+            </div>
+          </section>
+
           {/* Thẻ cấu trúc 3 Part */}
           <section className="mt-10" aria-label="Cấu trúc đề — 3 Part">
             <h2 className="font-display text-lg font-bold text-ink">Thẻ cấu trúc — 3 Part</h2>

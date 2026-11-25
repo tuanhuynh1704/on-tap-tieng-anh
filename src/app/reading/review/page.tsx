@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import ConfirmDialog from "@/components/ConfirmDialog";
 import ReadingDocumentCard from "@/components/ReadingDocumentCard";
@@ -219,6 +220,18 @@ export default function ReadingReviewPage() {
             Toàn bộ 100 câu kèm đáp án đúng. Đã nắm{" "}
             <strong className="font-tabular text-ink">{mounted ? masteredCount : 0}/{READING_TOTAL_QUESTIONS}</strong> câu.
           </p>
+
+          <div className="mt-4 flex flex-wrap gap-2" aria-label="Các trang học thuộc đáp án Reading">
+            <Link href="/reading/answer-check" className="inline-flex min-h-[44px] items-center rounded-xl border border-brand bg-brand-soft px-4 py-2.5 text-sm font-bold text-brand-dark hover:bg-brand/20">
+              Học thuộc đáp án Part 5
+            </Link>
+            <Link href="/reading/answer-check/part-6" className="inline-flex min-h-[44px] items-center rounded-xl border border-brand bg-brand-soft px-4 py-2.5 text-sm font-bold text-brand-dark hover:bg-brand/20">
+              Học thuộc đáp án Part 6
+            </Link>
+            <Link href="/reading/answer-check/part-7" className="inline-flex min-h-[44px] items-center rounded-xl border border-brand bg-brand-soft px-4 py-2.5 text-sm font-bold text-brand-dark hover:bg-brand/20">
+              Học thuộc đáp án Part 7
+            </Link>
+          </div>
 
           {/* Thanh công cụ: filter + search */}
           <div className="sticky top-[var(--site-header-height)] z-30 -mx-3 mt-4 border-b border-line/70 bg-paper/90 px-3 py-2 backdrop-blur sm:-mx-6 sm:px-6">
