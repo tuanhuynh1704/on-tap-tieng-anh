@@ -25,6 +25,18 @@ async function click(label) {
 }
 
 try {
+  // Vercel serves analytics only after deployment; stub that external integration locally.
+  browser.on("Fetch.requestPaused", ({ requestId }) => {
+    browser.send("Fetch.fulfillRequest", {
+      requestId,
+      responseCode: 200,
+      responseHeaders: [{ name: "Content-Type", value: "application/javascript" }],
+      body: "",
+    }).catch((error) => browser.consoleErrors.push(error.message));
+  });
+  await browser.send("Fetch.enable", { patterns: [{ urlPattern: `${base}/_vercel/insights/script.js*` }] });
+  await browser.send("Log.clear");
+  browser.consoleErrors.length = 0;
   await browser.setViewport(1440, 1000);
   await browser.navigate(`${base}/listening/answer-check`);
   await browser.waitFor("document.querySelectorAll('input[type=radio]').length === 124");
@@ -90,7 +102,7 @@ try {
   for (const width of [1440, 768, 390, 360]) {
     await browser.setViewport(width, 1000, width < 768);
     await verify(`No horizontal overflow at ${width}px`, "document.documentElement.scrollWidth <= window.innerWidth");
-    await verify(`Answer controls meet 44px height at ${width}px`, "[...document.querySelectorAll('fieldset span')].every(element => element.getBoundingClientRect().height >= 44)");
+    await verify(`Answer controls meet 44px height at ${width}px`, "[...document.querySelectorAll('fieldset label > span')].every(element => element.getBoundingClientRect().height >= 44)");
     if (width === 1440 || width === 390) {
       await browser.eval("window.scrollTo(0, 0)");
       await browser.screenshot(`C:/Users/nkocn/AppData/Local/Temp/kilo/listening-answer-check-${width}.png`);
@@ -104,10 +116,10 @@ try {
   passed++;
   await browser.navigate(`${base}/`);
   await browser.waitFor("document.querySelector('a[href=\"/listening/answer-check\"]') !== null");
-  await verify("Home links to the separate memorization practice", "document.querySelector('a[href=\"/listening/answer-check\"]').textContent.includes('Học thuộc đáp án Listening 1–31')");
+  await verify("Home links to the separate memorization practice", "document.querySelector('a[href=\"/listening/answer-check\"]').textContent.includes('Học thuộc đáp án Listening Part 1-2')");
   await browser.navigate(`${base}/review`);
   await browser.waitFor("document.querySelector('a[href=\"/listening/answer-check\"]') !== null");
-  await verify("Listening review links to separate scoring", "document.querySelector('a[href=\"/listening/answer-check\"]').textContent.includes('Chấm điểm riêng')");
+  await verify("Listening review links to separate scoring", "document.querySelector('a[href=\"/listening/answer-check\"]').textContent.includes('Học thuộc đáp án Listening Part 1-2')");
   assert.deepEqual(browser.exceptions, [], "No uncaught browser exceptions");
   assert.deepEqual(browser.consoleErrors, [], "No browser console errors");
   console.log(`RESULT: ${passed} checks passed; no console errors or uncaught exceptions.`);

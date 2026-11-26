@@ -22,6 +22,36 @@ export function formatScaledScore(score: number): string {
   return Number(score.toFixed(2)).toString();
 }
 
+/** Only checked answers in the current memorization section contribute to its score. */
+export function scoreMemorizationAnswers(
+  questions: readonly { id: number; answer: string }[],
+  checkedAnswers: Readonly<Record<number, string | null | undefined>>,
+) {
+  let correct = 0;
+  let wrong = 0;
+  let blank = 0;
+  for (const question of questions) {
+    const answer = checkedAnswers[question.id];
+    if (answer === undefined) continue;
+    if (answer === null) blank++;
+    else if (answer === question.answer) correct++;
+    else wrong++;
+  }
+  const total = questions.length;
+  const checked = correct + wrong + blank;
+  return {
+    total,
+    checked,
+    correct,
+    wrong,
+    blank,
+    remaining: total - checked,
+    percentage: total === 0 ? 0 : Math.round(correct / total * 100),
+    scaled: scaledFromRaw(correct),
+    maxScaled: scaledFromRaw(total),
+  };
+}
+
 export function scoreAnswers(answers: Record<number, string>): ScoreResult {
   const perPart: PerPartScore[] = PART_META.map(({ part }) => {
     const qs = QUESTIONS.filter((q) => q.part === part);

@@ -6,6 +6,7 @@ import { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import Transcript from "@/components/Transcript";
 import { GROUPS, QUESTIONS, type AnswerKey, type ExamGroup, type ExamQuestion } from "@/data/exam";
+import { formatScaledScore, scoreMemorizationAnswers } from "@/lib/scoring";
 
 const ANSWER_KEYS: AnswerKey[] = ["A", "B", "C", "D"];
 const MEMORY_PAGES = [
@@ -23,10 +24,7 @@ export default function ListeningAnswerCheck({ part }: { part: "1-2" | 3 | 4 }) 
   const [answers, setAnswers] = useState<Record<number, AnswerKey>>({});
   const [checkedAnswers, setCheckedAnswers] = useState<Record<number, AnswerKey | null>>({});
   const answeredCount = questions.filter((question) => answers[question.id]).length;
-  const checkedCount = Object.keys(checkedAnswers).length;
-  const correctCount = questions.filter((question) => checkedAnswers[question.id] === question.answer).length;
-  const wrongCount = questions.filter((question) => checkedAnswers[question.id] && checkedAnswers[question.id] !== question.answer).length;
-  const blankCount = questions.filter((question) => checkedAnswers[question.id] === null).length;
+  const { checked: checkedCount, correct: correctCount, wrong: wrongCount, blank: blankCount, remaining, percentage, scaled, maxScaled } = scoreMemorizationAnswers(questions, checkedAnswers);
 
   function selectAnswer(id: number, answer: AnswerKey) {
     if (answers[id] === answer) return;
@@ -164,13 +162,15 @@ export default function ListeningAnswerCheck({ part }: { part: "1-2" | 3 | 4 }) 
               <p className="text-sm font-semibold text-ink">Đã chọn {answeredCount}/{questionCount} câu</p>
               {checkedCount > 0 ? (
                 <>
-                  <p className="mt-1 font-display text-2xl font-bold text-brand-dark">Điểm riêng: {correctCount}/{questionCount} · {Math.round(correctCount / questionCount * 100)}%</p>
+                  <p className="mt-1 font-display text-2xl font-bold text-brand-dark">Điểm riêng: {correctCount}/{questionCount} · {percentage}%</p>
+                  <p className="mt-1 text-lg font-bold text-brand-dark">Điểm quy đổi{remaining > 0 ? " tạm tính" : ""}: {formatScaledScore(scaled)}/{formatScaledScore(maxScaled)}</p>
                   <p className="mt-2 text-sm text-ink-soft">Đã kiểm tra {checkedCount}/{questionCount} câu: {correctCount} đúng · {wrongCount} sai · {blankCount} bỏ trống.</p>
-                  {checkedCount < questionCount && <p className="mt-1 text-xs text-ink-soft">Còn {questionCount - checkedCount} câu chưa kiểm tra. Chọn “Chấm điểm {questionCount} câu” để có kết quả toàn phần.</p>}
+                  {remaining > 0 && <p className="mt-1 text-xs text-ink-soft">Còn {remaining} câu chưa kiểm tra. Chọn “Chấm điểm {questionCount} câu” để có kết quả toàn phần.</p>}
                 </>
               ) : (
                 <p className="mt-1 text-sm text-ink-soft">Chưa chấm điểm. Mỗi câu đúng được 1 điểm; sai hoặc bỏ trống được 0 điểm.</p>
               )}
+              <p className="mt-2 max-w-2xl text-xs leading-5 text-ink-soft">Điểm quy đổi = số câu đúng × 4,95; tối đa {formatScaledScore(maxScaled)} điểm cho {partLabel}. Đây là điểm ước lượng, không phải điểm TOEIC chính thức.</p>
             </div>
             <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap">
               <button type="button" onClick={checkAll} disabled={answeredCount === 0} className="min-h-[44px] rounded-xl bg-brand px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-40">Chấm điểm {questionCount} câu</button>
