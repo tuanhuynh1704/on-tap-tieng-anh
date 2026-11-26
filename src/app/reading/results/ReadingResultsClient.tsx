@@ -84,7 +84,7 @@ export default function ReadingResultsClient() {
 
   if (!mounted) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-paper">
+      <div className="animate-page-enter flex min-h-screen items-center justify-center bg-paper">
         <p className="text-sm text-ink-soft">Đang tải kết quả…</p>
       </div>
     );
@@ -92,7 +92,7 @@ export default function ReadingResultsClient() {
 
   if (!attempt) {
     return (
-      <div className="flex min-h-screen flex-col bg-paper">
+      <div className="animate-page-enter flex min-h-screen flex-col bg-paper">
         <SiteHeader />
         <main className="flex flex-1 flex-col items-center justify-center gap-4 px-4 py-12 text-center">
           <h1 className="font-display text-2xl font-bold text-ink">Không tìm thấy kết quả</h1>
@@ -113,7 +113,7 @@ export default function ReadingResultsClient() {
   const weakest = weakestPart(attempt.perPart);
 
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="animate-page-enter flex min-h-screen flex-col bg-paper">
       <SiteHeader />
       <main className="flex-1 px-3 py-6 sm:px-6">
         <div className="mx-auto max-w-4xl">

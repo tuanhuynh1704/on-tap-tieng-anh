@@ -10,7 +10,7 @@ export default function ReadingResultsPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen items-center justify-center bg-paper">
+        <div className="animate-page-enter flex min-h-screen items-center justify-center bg-paper">
           <p className="text-sm text-ink-soft">Đang tải kết quả…</p>
         </div>
       }

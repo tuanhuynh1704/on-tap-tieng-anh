@@ -198,7 +198,7 @@ export default function ReadingReviewPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="animate-page-enter flex min-h-screen flex-col bg-paper">
       <SiteHeader />
       <main className="flex-1 px-3 py-5 sm:px-6">
         <div className="mx-auto max-w-5xl">

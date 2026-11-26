@@ -180,7 +180,7 @@ export default function ReadingAnswerCheck({ part }: { part: ReadingPartNumber }
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="animate-page-enter flex min-h-screen flex-col bg-paper">
       <SiteHeader />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-10 sm:pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
         <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand">Reading · Học thuộc đáp án</p>

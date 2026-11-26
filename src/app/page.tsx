@@ -78,7 +78,7 @@ export default function HomePage() {
     module === "listening" ? getQuestionById(id) : getReadingQuestionById(id);
 
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="animate-page-enter flex min-h-screen flex-col bg-paper">
       <SiteHeader />
 
       <main className="flex flex-1 flex-col">

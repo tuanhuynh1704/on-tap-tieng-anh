@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ExplanationsPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-paper">
+    <div className="animate-page-enter flex min-h-screen flex-col bg-paper">
       <SiteHeader />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:py-10">
         <QuestionExplanationExplorer />

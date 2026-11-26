@@ -48,7 +48,7 @@ export default function Modal({
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
-      className={`fixed inset-0 m-0 hidden h-screen max-h-none w-full max-w-none flex-col overflow-y-auto overscroll-contain border-0 bg-transparent p-0 text-ink open:flex supports-[height:100dvh]:h-dvh backdrop:bg-black/50 ${className}`}
+      className={`fixed inset-0 m-0 hidden h-screen max-h-none w-full max-w-none flex-col overflow-y-auto overscroll-contain border-0 bg-transparent p-0 text-ink open:animate-page-enter open:flex supports-[height:100dvh]:h-dvh backdrop:bg-black/50 ${className}`}
     >
       {children}
     </dialog>

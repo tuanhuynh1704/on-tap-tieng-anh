@@ -305,7 +305,7 @@ export default function ReadingPracticePage() {
   }
 
   return (
-    <div ref={pageRef} className="flex min-h-screen flex-col bg-paper supports-[height:100dvh]:min-h-dvh">
+    <div ref={pageRef} className="animate-page-enter flex min-h-screen flex-col bg-paper supports-[height:100dvh]:min-h-dvh">
       {/* Header dính */}
       <header ref={toolbarRef} className="sticky top-0 z-40 border-b border-line/70 bg-paper/90 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-3 pb-2 pt-[calc(0.5rem+env(safe-area-inset-top))] sm:px-4">
