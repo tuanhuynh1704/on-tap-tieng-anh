@@ -73,6 +73,7 @@ export default function ReadingAnswerCheck({ part }: { part: ReadingPartNumber }
     const correct = checkedAnswers[question.id] === question.answer;
     const answerText = question.options.find((option) => option.key === question.answer)?.text;
     const promptId = `reading-memory-prompt-${question.id}`;
+    const QuestionHeading = part === 5 ? "h2" : "h3";
 
     return (
       <section
@@ -81,9 +82,9 @@ export default function ReadingAnswerCheck({ part }: { part: ReadingPartNumber }
         aria-labelledby={`reading-memory-question-${question.id}`}
       >
         <div className="flex items-center justify-between gap-2">
-          <h2 id={`reading-memory-question-${question.id}`} className="font-display text-lg font-bold text-ink">
+          <QuestionHeading id={`reading-memory-question-${question.id}`} className="font-display text-lg font-bold text-ink">
             Câu {question.id}
-          </h2>
+          </QuestionHeading>
           <span className="text-xs font-semibold text-ink-soft">Part {question.part}</span>
         </div>
 
@@ -154,10 +155,19 @@ export default function ReadingAnswerCheck({ part }: { part: ReadingPartNumber }
   }
 
   function renderPassage(passage: ReadingPassage) {
+    const firstId = passage.questionIds[0];
+    const lastId = passage.questionIds[passage.questionIds.length - 1];
+
     return (
-      <section key={passage.id} className="rounded-2xl border border-line bg-white p-3 shadow-card sm:p-4" aria-labelledby={`reading-memory-passage-${passage.id}`}>
+      <section key={passage.id} className="rounded-2xl border border-line bg-white p-3 shadow-card sm:p-4" aria-labelledby={`reading-memory-passage-group-${passage.id}`}>
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <h2 id={`reading-memory-passage-group-${passage.id}`} className="font-display text-lg font-bold text-ink">
+            Cụm câu {firstId}–{lastId}
+          </h2>
+          <span className="text-xs font-semibold text-ink-soft">Đoạn đọc · {passage.questionIds.length} câu</span>
+        </div>
         <div className="border-b border-line/70 pb-4">
-          <p id={`reading-memory-passage-${passage.id}`} className="text-xs italic leading-5 text-ink-soft">
+          <p className="text-xs italic leading-5 text-ink-soft">
             {passage.intro}
           </p>
           <div className="mt-3 flex min-w-0 flex-col gap-3">
