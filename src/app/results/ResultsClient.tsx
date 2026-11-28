@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import MistakeRetry from "@/components/MistakeRetry";
 import PartBreakdown from "@/components/PartBreakdown";
 import ScoreRing from "@/components/ScoreRing";
 import SiteHeader from "@/components/SiteHeader";
@@ -12,7 +13,7 @@ import Transcript from "@/components/Transcript";
 import { PART_META, QUESTIONS, getGroupForQuestion, type ExamQuestion, type PartNumber, EXAM_DATE } from "@/data/exam";
 import { formatScaledScore, PART_ADVICE, weakestPart } from "@/lib/scoring";
 import { clearDraft, getAttempt, getPreviousAttempt, loadHistory } from "@/lib/storage";
-import { speechTextForQuestion, type SpeechRate } from "@/lib/tts";
+import { speechTextForQuestion, stripCues, type SpeechRate } from "@/lib/tts";
 
 export default function ResultsClient() {
   const searchParams = useSearchParams();
@@ -27,8 +28,8 @@ export default function ResultsClient() {
   const previous = mounted && id ? getPreviousAttempt(id) : undefined;
   const totalAttempts = mounted ? loadHistory().length : 0;
 
-  const wrongCount = useMemo(
-    () => (attempt ? QUESTIONS.filter((q) => attempt.answers[q.id] !== q.answer).length : 0),
+  const missed = useMemo(
+    () => (attempt ? QUESTIONS.filter((q) => attempt.answers[q.id] !== q.answer) : []),
     [attempt]
   );
 
@@ -63,9 +64,7 @@ export default function ResultsClient() {
   const weakest = weakestPart(attempt.perPart);
   const weakestMeta = PART_META.find((m) => m.part === weakest.part)!;
 
-  const visibleQuestions = QUESTIONS.filter(
-    (q) => filter === "all" || attempt.answers[q.id] !== q.answer
-  );
+  const visibleQuestions = filter === "all" ? QUESTIONS : missed;
 
   function renderQuestion(q: ExamQuestion) {
     const chosen = attempt!.answers[q.id];
@@ -188,6 +187,24 @@ export default function ResultsClient() {
             </div>
           </section>
 
+          <MistakeRetry key={attempt.id} section="listening" missed={missed} renderContext={(q, previous) => {
+            const group = getGroupForQuestion(q);
+            const showAudio = !group || q.groupId !== previous?.groupId;
+            return (
+              <>
+                {showAudio && <SpeakButton text={speechTextForQuestion(q, group)} rate={rate} label={group ? "Nghe đoạn hội thoại hoặc bài nói" : "Nghe câu hỏi"} />}
+                {group && showAudio && (
+                  <details className="text-sm text-ink-soft">
+                    <summary className="cursor-pointer font-semibold">Xem transcript: {group.title}</summary>
+                    <Transcript transcript={stripCues(group.transcript)} />
+                  </details>
+                )}
+                {q.image && <Image src={q.image} alt={q.imageAlt ?? `Bức tranh câu ${q.id}`} width={640} height={480} className="h-auto w-full max-w-md rounded-xl border border-line" sizes="(max-width: 640px) 100vw, 448px" />}
+                {q.graphic && <Image src={q.graphic} alt={q.graphicAlt ?? `Hình minh họa câu ${q.id}`} width={640} height={400} className="h-auto w-full max-w-md rounded-xl border border-line" sizes="(max-width: 640px) 100vw, 448px" />}
+              </>
+            );
+          }} />
+
           {/* Breakdown theo Part */}
           <section className="animate-fade-up mt-4 rounded-2xl border border-line bg-white p-5 shadow-card" style={{ animationDelay: "240ms" }}>
             <h2 className="font-display text-lg font-bold text-ink">Phân tích theo từng Part</h2>
@@ -203,7 +220,7 @@ export default function ResultsClient() {
           <section className="mt-6" style={{ animationDelay: "300ms" }}>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="font-display text-lg font-bold text-ink">
-                Chi tiết từng câu {filter === "wrong" ? `(${wrongCount} câu sai)` : "(toàn bộ 100 câu)"}
+                Chi tiết từng câu {filter === "wrong" ? `(${missed.length} câu sai)` : "(toàn bộ 100 câu)"}
               </h2>
               <div className="flex flex-wrap items-center gap-2">
                 <div className="flex items-center rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold" role="group" aria-label="Lọc câu">

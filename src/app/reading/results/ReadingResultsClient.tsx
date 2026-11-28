@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import MistakeRetry from "@/components/MistakeRetry";
 import PartBreakdown, { type BreakdownMeta } from "@/components/PartBreakdown";
 import ReadingDocumentCard from "@/components/ReadingDocumentCard";
 import ScoreRing from "@/components/ScoreRing";
@@ -11,6 +12,7 @@ import {
   READING_PASSAGES,
   READING_PART_META,
   READING_QUESTIONS,
+  getReadingPassageForQuestion,
   getReadingQuestionById,
   type ReadingPassage,
   type ReadingQuestion,
@@ -46,8 +48,8 @@ export default function ReadingResultsClient() {
   const previous = mounted && id ? getPreviousAttempt(id) : undefined;
   const totalAttempts = mounted ? loadHistory().length : 0;
 
-  const wrongCount = useMemo(
-    () => (attempt ? READING_QUESTIONS.filter((q) => attempt.answers[q.id] !== q.answer).length : 0),
+  const missed = useMemo(
+    () => (attempt ? READING_QUESTIONS.filter((q) => attempt.answers[q.id] !== q.answer) : []),
     [attempt]
   );
 
@@ -154,6 +156,17 @@ export default function ReadingResultsClient() {
             </div>
           </section>
 
+          <MistakeRetry key={attempt.id} section="reading" missed={missed} renderContext={(q, previous) => {
+            if (q.passageId === previous?.passageId) return null;
+            const passage = getReadingPassageForQuestion(q);
+            return passage && (
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-ink-soft">{passage.intro}</p>
+                {passage.documents.map((doc) => <ReadingDocumentCard key={doc.id} doc={doc} />)}
+              </div>
+            );
+          }} />
+
           {/* Breakdown theo Part */}
           <section className="animate-fade-up mt-4 rounded-2xl border border-line bg-white p-5 shadow-card" style={{ animationDelay: "160ms" }}>
             <h2 className="font-display text-lg font-bold text-ink">Phân tích theo từng Part</h2>
@@ -169,7 +182,7 @@ export default function ReadingResultsClient() {
           <section className="mt-6" style={{ animationDelay: "240ms" }}>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="font-display text-lg font-bold text-ink">
-                Chi tiết từng câu {filter === "wrong" ? `(${wrongCount} câu sai)` : "(toàn bộ 100 câu)"}
+                Chi tiết từng câu {filter === "wrong" ? `(${missed.length} câu sai)` : "(toàn bộ 100 câu)"}
               </h2>
               <div className="flex flex-wrap items-center gap-2">
                 <div className="flex items-center rounded-lg border border-line bg-paper-deep p-1 text-xs font-bold" role="group" aria-label="Lọc câu">
